@@ -28,12 +28,7 @@ const routes: Routes = [
     path: 'layout',
     loadChildren: () => import('./layout/layout.module').then(mod => mod.LayoutModule)
   },
-  // {
-  //   path: 'layoutmodule', component: LayoutComponent,
-  //   children: [
-  //     { path: 'dashboard', component: DashboardComponent }
-  //   ]
-  // },
+
 
 ];
 
