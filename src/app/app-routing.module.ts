@@ -14,12 +14,10 @@ const routes: Routes = [
     children: [
       { path: 'addproduct', component: AddProductComponent },
       { path: 'dash', component: DashboardComponent },
-     // { path: '', redirectTo: '/dash', pathMatch: 'full' },
 
     ]
   },
-  // { path: 'addproduct', component: AddProductComponent},
-  // {path:'l', loadChildren:'./Project/IGMC/IGMC.module#IGMCRoutingModule'}
+
   {
     path: 'igmc',
     loadChildren: () => import('./Project/IGMC/igmc.module').then(mod => mod.IGMCModule)
