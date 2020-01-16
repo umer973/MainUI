@@ -9,12 +9,14 @@ import { AddBrandComponent } from './Project/IGMC/add-brand/add-brand.component'
 import { AddCategoryComponent } from './Project/IGMC/add-category/add-category.component';
 import { AddDealerComponent } from './Project/IGMC/add-dealer/add-dealer.component';
 import { AddHSNComponent } from './Project/IGMC/add-hsn/add-hsn.component';
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'layout', component: LayoutComponent,
+    // canActivateChild:[AuthGuardService],
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
 
   modules: any[];
   pages: any[];
-  routeUrl = "layout/";
+  routeUrl="layout/";
 
   constructor(private router: Router) { }
 
@@ -21,9 +21,9 @@ export class SidebarComponent implements OnInit {
   }
 
   currentRoute(Selectedroute: any) {
-
-    this.routeUrl = "layout/";
-    this.routeUrl = this.routeUrl + Selectedroute;
+   
+    this.routeUrl="layout/";
+    this.routeUrl=this.routeUrl+Selectedroute;
     console.log(Selectedroute);
     this.router.navigate([this.routeUrl])
   }
@@ -39,12 +39,12 @@ export class SidebarComponent implements OnInit {
         ]
       },
       {
-        "ModuleId": 2, "ModuleName": "Transations",
+        "ModuleId": 2, "ModuleName": "Transations", "path": "",
         "Pages": [
           { "path": "adddealer", "PageName": "Add Dealer" },
         ]
       },
-      { "ModuleId": 3, "ModuleName": "Reports", }
+      { "ModuleId": 3, "ModuleName": "Reports", "path": "" }
     ]
 
     console.log(this.modules);
