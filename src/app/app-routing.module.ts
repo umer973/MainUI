@@ -16,13 +16,14 @@ const routes: Routes = [
   {
     path: 'layout', component: LayoutComponent,
     children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'addproduct', component: AddProductComponent },
       { path: 'addbrand', component: AddBrandComponent },
       { path: 'addcategory', component: AddCategoryComponent },
       { path: 'adddealer', component: AddDealerComponent },
       { path: 'addhsn', component: AddHSNComponent },
-      { path: 'dash', component: DashboardComponent },
-      { path: 'dash', component: DashboardComponent },
+     
 
     ]
   },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  constructor(private router:Router,private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
@@ -20,20 +20,12 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
 
-  onLogin()
-  {
+  onLogin() {
     
-    
-    ///umer has changed thius file
-   // debugger
-    //this.submitted = true;
-   
-   // if (this.loginForm.valid) {
-      this.router.navigate(['/layout'])
-       
-    }
-   
-   // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
-  //}
+    this.router.navigate(['/layout']);
+
+  }
+
+
 
 }
