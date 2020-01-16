@@ -10,17 +10,47 @@ export class SidebarComponent implements OnInit {
 
   @Output() selectTedRoute = new EventEmitter();
 
-  constructor(private router:Router) { }
+  modules: any[];
+  pages: any[];
+  routeUrl = "layout/";
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.binfModules();
   }
 
-  currentRoute(route:any) { 
-    console.log(route,"child");
-    //this.router.navigate['/addproduct']
-    this.router.navigate(['layout/addproduct'])
-    
-   // this.selectTedRoute.emit(route);
-}
+  currentRoute(Selectedroute: any) {
 
+    this.routeUrl = "layout/";
+    this.routeUrl = this.routeUrl + Selectedroute;
+    console.log(Selectedroute);
+    this.router.navigate([this.routeUrl])
+  }
+
+  binfModules() {
+
+    this.modules = [
+      {
+        "ModuleId": 1, "ModuleName": "Maters",
+        "Pages": [
+          { "path": "addproduct", "PageName": "Add Product" },
+          { "path": "addbrand", "PageName": "Add Brand" },
+        ]
+      },
+      {
+        "ModuleId": 2, "ModuleName": "Transations",
+        "Pages": [
+          { "path": "adddealer", "PageName": "Add Dealer" },
+        ]
+      },
+      { "ModuleId": 3, "ModuleName": "Reports", }
+    ]
+
+    console.log(this.modules);
+
+  }
+  bindPages() {
+
+  }
 }
