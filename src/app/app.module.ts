@@ -10,6 +10,8 @@ import { LayoutModule } from './layout/layout.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuardService } from './auth-guard.service';
+import { HttpClientModule } from '@angular/common/http'
+import { ModuleService } from './CommonSevices/module.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,11 @@ import { AuthGuardService } from './auth-guard.service';
     IGMCModule,
     LayoutModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
+    
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService,ModuleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

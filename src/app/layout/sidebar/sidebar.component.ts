@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModuleService } from 'src/app/CommonSevices/module.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,11 +15,14 @@ export class SidebarComponent implements OnInit {
   pages: any[];
   routeUrl="layout/";
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private service:ModuleService) { }
 
   ngOnInit() {
-    this.binfModules();
+    
+    this.modules=this.service.loadModules();
+
   }
+  
 
   currentRoute(Selectedroute: any) {
    
@@ -28,29 +32,5 @@ export class SidebarComponent implements OnInit {
     this.router.navigate([this.routeUrl])
   }
 
-  binfModules() {
-
-    this.modules = [
-      {
-        "ModuleId": 1, "ModuleName": "Maters",
-        "Pages": [
-          { "path": "addproduct", "PageName": "Add Product" },
-          { "path": "addbrand", "PageName": "Add Brand" },
-        ]
-      },
-      {
-        "ModuleId": 2, "ModuleName": "Transations", "path": "",
-        "Pages": [
-          { "path": "adddealer", "PageName": "Add Dealer" },
-        ]
-      },
-      { "ModuleId": 3, "ModuleName": "Reports", "path": "" }
-    ]
-
-    console.log(this.modules);
-
-  }
-  bindPages() {
-
-  }
+ 
 }
