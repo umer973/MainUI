@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ModuleService } from 'src/app/CommonSevices/module.service';
 
 @Component({
@@ -13,24 +13,27 @@ export class SidebarComponent implements OnInit {
 
   modules: any[];
   pages: any[];
-  routeUrl="layout/";
+  routeUrl = "layout/";
+  userObject: any;
 
-  constructor(private router: Router,private service:ModuleService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private service: ModuleService) { }
 
   ngOnInit() {
+    this.userObject = this.route.snapshot.queryParamMap.get("user");
     
-    this.modules=this.service.loadModules();
+    console.log(this.userObject);
+    this.modules = this.service.loadModules();
 
   }
-  
+
 
   currentRoute(Selectedroute: any) {
-   
-    this.routeUrl="layout/";
-    this.routeUrl=this.routeUrl+Selectedroute;
+
+    this.routeUrl = "layout/";
+    this.routeUrl = this.routeUrl + Selectedroute;
     console.log(Selectedroute);
     this.router.navigate([this.routeUrl])
   }
 
- 
+
 }
