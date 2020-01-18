@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuardService } from './auth-guard.service';
 import { HttpClientModule } from '@angular/common/http'
 import { ModuleService } from './CommonSevices/module.service';
+import { AccountsModule } from './Project/Accounts/accounts.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ModuleService } from './CommonSevices/module.service';
     ProductDetailsModule,
     SalesPaymentModule,
     IGMCModule,
+    AccountsModule,
     LayoutModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

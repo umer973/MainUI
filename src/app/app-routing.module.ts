@@ -10,6 +10,7 @@ import { AddCategoryComponent } from './Project/IGMC/add-category/add-category.c
 import { AddDealerComponent } from './Project/IGMC/add-dealer/add-dealer.component';
 import { AddHSNComponent } from './Project/IGMC/add-hsn/add-hsn.component';
 import { AuthGuardService } from './auth-guard.service';
+import { CreateAccountComponent } from './Project/Accounts/create-account/create-account.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'addcategory', component: AddCategoryComponent },
       { path: 'adddealer', component: AddDealerComponent },
       { path: 'addhsn', component: AddHSNComponent },
+      { path: 'createaccount', component: CreateAccountComponent },
      
 
     ]

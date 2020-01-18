@@ -25,6 +25,12 @@ export class ModuleService {
           { "path": "adddealer", "PageName": "Add Dealer" },
         ]
       },
+      {
+        "ModuleId": 2, "ModuleName": "Accounts", "path": "",
+        "Pages": [
+          { "path": "createaccount", "PageName": "Create Account" },
+        ]
+      },
       { "ModuleId": 3, "ModuleName": "Reports", "path": "" },
       { "ModuleId": 4, "ModuleName": "User Account", "path": "" },
 
