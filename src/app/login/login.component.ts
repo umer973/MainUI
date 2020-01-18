@@ -39,17 +39,21 @@ export class LoginComponent implements OnInit {
     this.user.userId = 1
 
     console.log(this.user);
-    
-    this.service.postLogin(this.user).subscribe
-      (response => {
-        console.log(response,"response");
-        this.router.navigate(['/layout'], { queryParams: { "user": this.user.userName.value } });
-      }, err => {
-        console.log(err);
-      });
+
+    this.service.postLogin(this.user).subscribe(response => {
+      let result: any = response;
+      console.log(result);
+      if (result.StatusCode == 200) {
+        console.log(result);
+      }
+      console.log(response, "response");
+      this.router.navigate(['/layout'], { queryParams: { "user": this.user.userName.value } });
+    }, err => {
+      console.log(err);
+    });
 
 
-    
+
 
   }
 
