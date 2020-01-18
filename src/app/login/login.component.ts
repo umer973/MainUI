@@ -44,10 +44,14 @@ export class LoginComponent implements OnInit {
       let result: any = response;
       console.log(result);
       if (result.StatusCode == 200) {
-        console.log(result);
+        console.log(result.response);
+        this.router.navigate(['/layout'], { queryParams: { "user": this.user.userName.value } });
+
       }
-      console.log(response, "response");
-      this.router.navigate(['/layout'], { queryParams: { "user": this.user.userName.value } });
+      else {
+        console.log(result.StatusCode)
+      }
+
     }, err => {
       console.log(err);
     });
