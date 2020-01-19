@@ -7,17 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  currentRoute:any="Dashboard";
+  loggedUser:any='Admin'
   constructor() {
-    this.currentRoute="Dashboard";
    }
  
   ngOnInit() {
   }
 
-  selectCurrentRoute(route?:any)
-  {
-    console.log(route,"parent");
-    this.currentRoute=route;
-  }
+ 
 }

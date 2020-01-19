@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModuleService } from 'src/app/CommonSevices/module.service';
 
@@ -10,6 +10,7 @@ import { ModuleService } from 'src/app/CommonSevices/module.service';
 export class SidebarComponent implements OnInit {
 
   @Output() selectTedRoute = new EventEmitter();
+  @Input() loggedUser:any;
 
   modules: any[];
   pages: any[];
