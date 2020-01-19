@@ -13,6 +13,9 @@ import { AuthGuardService } from './auth-guard.service';
 import { HttpClientModule } from '@angular/common/http'
 import { ModuleService } from './CommonSevices/module.service';
 import { AccountsModule } from './Project/Accounts/accounts.module';
+import { MatInputModule } from '@angular/material/input';
+import { MaterialModule } from './Project/material.module';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { AccountsModule } from './Project/Accounts/accounts.module';
     LayoutModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,MatInputModule,
+    MaterialModule
     
   ],
   providers: [AuthGuardService,ModuleService],
