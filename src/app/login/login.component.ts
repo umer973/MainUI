@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           if(result.Result.userName==this.user.userName && result.Result.password==this.user.password)
           {
             alert('Sucess')
-            this.router.navigate(['/layout'], { queryParams: { "user": this.user.userName.value } });
+            this.router.navigate(['/layout'], { queryParams: { 'user': result.Result.userName } });
           }
           else
           {
