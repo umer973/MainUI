@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../Models/user';
 import { LoginService } from '../login.service';
-import { privateEncrypt } from 'crypto';
 import { LoaderService } from '../loader.service';
 
 
