@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'layout', component: LayoutComponent,
-    // canActivateChild:[AuthGuardService],
+    canActivateChild:[AuthGuardService],
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

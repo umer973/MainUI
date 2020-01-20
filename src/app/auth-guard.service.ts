@@ -6,25 +6,23 @@ import { Router } from '@angular/router';
 })
 export class AuthGuardService {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
-  valid: boolean = true
-
-  canActivate()
-  {
+  canActivate() {
     return true;
   }
 
 
   canActivateChild() {
-    if (this.valid) {
+
+    console.log(localStorage.getItem('isLoggedin'),"IsLogged");
+    if (localStorage.getItem('isLoggedin')) {
       return true
     }
+    
+
     else {
-      debugger;
-      
-      
-        this.router.navigate['/']
+     this.router.navigate['/']
     }
   }
 }

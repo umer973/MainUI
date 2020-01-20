@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../Models/user';
 import { LoginService } from '../login.service';
+import { privateEncrypt } from 'crypto';
+import { LoaderService } from '../loader.service';
 
 
 
@@ -15,15 +17,17 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   user: User = new User();
+  loading: boolean = false;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private service: LoginService
+    private service: LoginService,
+    private loaderserice: LoaderService
   ) { }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required, ]]
+      password: ['', [Validators.required,]]
     });
 
 
@@ -42,60 +46,38 @@ export class LoginComponent implements OnInit {
       this.user.userId = 1
 
       // Calling API
+      this.loaderserice.show();
       this.service.postLogin(this.user).subscribe(response => {
         let result: any = response;
         console.log(result);
         if (result.StatusCode == 200) {
-         
-          if(result.Result.userName==this.user.userName && result.Result.password==this.user.password)
-          {
+
+          if (result.Result.userName == this.user.userName && result.Result.password == this.user.password) {
             alert('Sucess')
+            localStorage.setItem('isLoggedin', 'true');
             this.router.navigate(['/layout'], { queryParams: { 'user': result.Result.userName } });
           }
-          else
-          {
+          else {
             alert('Login failed')
+            localStorage.setItem('isLoggedin', 'true');
           }
-          console.log(result.Result)
-          
+          this.loaderserice.hide();
+
 
         }
         else {
-          console.log(result)
+          alert(result)
+          this.loaderserice.hide();
 
         }
 
       }, err => {
-        alert(err)
+        alert('error');
+        this.loaderserice.hide();
+
       });
 
-
-
-
-
     }
-
-
-
-    //console.log(this.user);
-
-    // this.service.postLogin(this.user).subscribe(response => {
-    //   let result: any = response;
-    //   console.log(result);
-    //   if (result.StatusCode == 200) {
-    //     console.log(result.response);
-    //    // this.router.navigate(['/layout'], { queryParams: { "user": this.user.userName.value } });
-
-    //   }
-    //   else {
-    //     console.log(result.StatusCode)
-    //   }
-
-    // }, err => {
-    //   console.log(err);
-    // });
-
-
 
 
   }

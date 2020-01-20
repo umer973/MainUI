@@ -15,12 +15,14 @@ import { ModuleService } from './CommonSevices/module.service';
 import { AccountsModule } from './Project/Accounts/accounts.module';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from './Project/material.module';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    LoaderComponent,
 
   ],
   imports: [
@@ -37,6 +39,7 @@ import { MaterialModule } from './Project/material.module';
     MaterialModule
     
   ],
+  exports:[],
   providers: [AuthGuardService,ModuleService],
   bootstrap: [AppComponent]
 })
