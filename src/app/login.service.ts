@@ -7,9 +7,9 @@ import { User } from './Models/user';
 })
 export class LoginService {
 
-  //url:any = 'http://localhost:60040/Api/Login'
+  url:any = 'http://localhost:60040/Api/Login'
   
-  url:any='http://192.168.0.194:8006/Api/Login'
+  //url:any='http://192.168.0.194:8006/Api/Login'
   
 
   constructor(private http: HttpClient) { }

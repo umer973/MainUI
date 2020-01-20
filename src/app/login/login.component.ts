@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
         }
 
       }, err => {
-        alert('error');
+        alert('An error occured please try again');
         this.loaderserice.hide();
 
       });
