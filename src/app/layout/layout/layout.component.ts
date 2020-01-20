@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/Models/user';
+import { LoaderService } from 'src/app/loader.service';
 
 @Component({
   selector: 'app-layout',
@@ -10,12 +11,18 @@ import { User } from 'src/app/Models/user';
 export class LayoutComponent implements OnInit {
 
   loggedUser:any;
-  constructor(private route:ActivatedRoute) {
+  constructor(private route:ActivatedRoute,private loaderservice:LoaderService) {
+    
+  }
 
    
-   }
+   
  
   ngOnInit() {
+
+
+   
+
     this.loggedUser=this.route.snapshot.queryParamMap.get('user');
     console.log(this.loggedUser,"user");
   }
