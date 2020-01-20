@@ -11,9 +11,9 @@
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->
-                <div class="card card-primary">
+                <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Add Product</h3>
+                        <h3 class="card-title">Add Dealer</h3>
                     </div>
                     <form role="form">
                         <div class="card-body">
@@ -51,9 +51,10 @@
                                         <input placeholder="Enter Email" id="email" formControlName="email"
                                             class="form-control"
                                             [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                            <div *ngIf="f.email.errors.required">Email is required</div>
-                                        </div>
+                                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +63,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer float-right">
-                            <button type="submit" (click)="onSaveDealer()" class="btn btn-primary ">Add Dealer</button>
+                            <button type="button" (click)="onDealerSave()" class="btn btn-info ">Add Dealer</button>
                         </div>
                     </form>
                 </div>
@@ -139,6 +140,7 @@
                                                 <td class="sorting_1">Webkit</td>
                                                 <td>Safari 1.2</td>
                                                 <td>OSX.3</td>
+                                                <td>OSX.5</td>
                                                 <td class="project-actions text-right">
                                                     <a class="btn btn-primary btn-sm" href="#">
                                                         <i class="fas fa-folder">

@@ -20,7 +20,7 @@ export class AddCategoryComponent implements OnInit {
 }
 
   get f() { return this.addcategoryForm.controls; }
-  onBrandSave(){
+  onCategorySave(){
     this.submitted = true;
     if (this.addcategoryForm.valid) {
       this.router.navigate(['/AddCategory'])

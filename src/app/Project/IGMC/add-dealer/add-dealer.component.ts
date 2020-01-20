@@ -14,7 +14,10 @@ export class AddDealerComponent implements OnInit {
   ngOnInit() {
 
     this.adddealerForm = this.formBuilder.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      address: ['', Validators.required],
+      phone: ['', Validators.required],
     });
   }
   get f() { return this.adddealerForm.controls; }

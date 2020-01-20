@@ -15,13 +15,13 @@ import { ModuleService } from './CommonSevices/module.service';
 import { AccountsModule } from './Project/Accounts/accounts.module';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from './Project/material.module';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// Datepicker module
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,9 @@ import { MaterialModule } from './Project/material.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,MatInputModule,
-    MaterialModule
+    MaterialModule,
+    NgbModule,
+   
     
   ],
   providers: [AuthGuardService,ModuleService],

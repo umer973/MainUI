@@ -14,7 +14,7 @@ export class AddHSNComponent implements OnInit {
 
   ngOnInit() {
     this.addhsnForm = this.formBuilder.group({
-      brandname: ['', Validators.required]
+      hsnname: ['', Validators.required]
     });
 
   }

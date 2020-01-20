@@ -16,9 +16,9 @@
                 <!-- left column -->
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Add Product</h3>
+                          <h3 class="card-title">Add Product</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -27,24 +27,28 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            test
+                                            <!--  test
                                             <mat-form-field>
                                             <input matInput placeholder="Enter Title" formControlName="title">
-                                          </mat-form-field>
-                                            <!-- <input placeholder="Enter Title" id="title" formControlName="title"
+                                           <mat-error *ngFor="let validation of validation_messages.title">
+                                                <mat-error class="error-message" *ngIf="addproductForm.get('title').hasError(validation.type) 
+                                                && (addproductForm.get('title').dirty || addproductForm.get('title').touched)">{{validation.message}}</mat-error>
+                                              </mat-error> 
+                                          </mat-form-field>-->
+                                            <input placeholder="Enter Title" id="title" formControlName="title"
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
                                             <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
                                                 <div *ngIf="f.title.errors.required">Title is required</div>
-                                            </div> -->
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <!-- <textarea class="form-control" rows="3"
-                                                placeholder="Enter Description ..."></textarea> -->
-                                             <mat-form-field>
-                                                <textarea matInput placeholder="Enter Description ..." formControlName="title" >
+                                            <textarea class="form-control" rows="3"
+                                                placeholder="Enter Description ..."></textarea>
+                                             <!-- <mat-form-field>
+                                                <textarea matInput placeholder="Enter Description ..." formControlName="title" >       
                                                 </textarea>
-                                              </mat-form-field> 
+                                              </mat-form-field>  -->
 
                                         </div>
                                     </div>
@@ -67,11 +71,11 @@
                                              <!-- <mat-form-field>
                                             <input matInput placeholder="Enter sellingPrice" formControlName="sellingPrice">
                                           </mat-form-field> -->
-                                            <input placeholder="Enter sellingPrice" id="sellingPrice"
-                                                formControlName="sellingPrice" class="form-control"
-                                                [ngClass]="{ 'is-invalid': submitted && f.sellingPrice.errors }" />
-                                            <div *ngIf="submitted && f.sellingPrice.errors" class="invalid-feedback">
-                                                <div *ngIf="f.sellingPrice.errors.required">sellingPrice is required
+                                            <input placeholder="Enter sellingPrice" id="sellingprice"
+                                                formControlName="sellingprice" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.sellingprice.errors }" />
+                                            <div *ngIf="submitted && f.sellingprice.errors" class="invalid-feedback">
+                                                <div *ngIf="f.sellingprice.errors.required">sellingPrice is required
                                                 </div>
                                             </div>
                                         </div>
@@ -98,7 +102,7 @@
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.sgst.errors }" />
                                             <div *ngIf="submitted && f.sgst.errors" class="invalid-feedback">
-                                                <div *ngIf="f.sellingPsgstrice.errors.required">SGST is required</div>
+                                                <div *ngIf="f.sgst.errors.required">SGST is required</div>
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +118,8 @@
                                                     <mat-option value="2">Option 2</mat-option>
                                                 </mat-select>
                                             </mat-form-field> -->
-                                            <select class="form-control">
+                                        
+                                                <select formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
                                                 <option value="0">--Select Category--</option>
                                                 <option>option 1</option>
                                                 <option>option 2</option>
@@ -125,17 +130,27 @@
                                                 {{summary}}
                                             </option> -->
                                             </select>
+                                                <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.category.errors.required">Category is required</div>
+                                                </div>
+                                            
                                         </div>
                                         <div class="col-md-6">
 
-                                            <select class="form-control">
+                                            <select formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.brand.errors }">
                                                 <option value="0">--Select Brand--</option>
                                                 <option>option 1</option>
                                                 <option>option 2</option>
                                                 <option>option 3</option>
                                                 <option>option 4</option>
                                                 <option>option 5</option>
+                                                <!-- <option *ngFor="let summary of summaries" value={{summary}}>
+                                                {{summary}}
+                                            </option> -->
                                             </select>
+                                                <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.brand.errors.required">Brand is required</div>
+                                                </div>
                                              <!-- <mat-form-field>
                                                 <mat-select >
                                                     <mat-option value="0">--Select Brand--</mat-option>
@@ -151,9 +166,12 @@
                                         <div class="col-md-6">
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="chooseimage">
+                                                    <input type="file" formControlName="image"class="custom-file-input" id="chooseimage">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose Image
                                                     </label>
+                                                    <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                                                        <div *ngIf="f.image.errors.required">Image is required</div>
+                                                    </div>
                                                 </div>
                                                 <!-- <div class="input-group-append">
                                                 <span class="input-group-text" id="">Upload</span>
@@ -182,7 +200,7 @@
                                                 <mat-datepicker #picker></mat-datepicker>
                                               </mat-form-field> -->
                                             <!-- <label>Expiry Date</label> -->
-                                            <div class="input-group">
+                                            <!-- <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">
                                                         <i class="fa fa-calendar"></i>
@@ -191,7 +209,16 @@
                                                 <input type="text" placeholder="Expiry Date"
                                                     formControlName="expirydate" class="form-control float-right"
                                                     id="expirydate">
-                                            </div>
+                                            </div> -->
+                                            <div class="input-group">
+                                                <input type="text"
+                                                      placeholder="Expiry Date"  formControlName="expirydate"
+                                                      class="form-control"
+                                                      bsDatepicker [ngClass]="{ 'is-invalid': submitted && f.expirydate.errors }" />
+                                                      <div *ngIf="submitted && f.expirydate.errors" class="invalid-feedback">
+                                                          <div *ngIf="f.expirydate.errors.required">Expiry Date is required</div>
+                                                      </div>
+                                              </div>
                                         </div>
                                         <div class="col-md-6">
                                              <!-- <mat-form-field>
@@ -202,14 +229,20 @@
                                                 </mat-select>
                                             </mat-form-field> -->
 
-                                            <select class="form-control">
+                                            <select formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.hsn.errors }">
                                                 <option value="0">--Select HSN--</option>
                                                 <option>option 1</option>
                                                 <option>option 2</option>
                                                 <option>option 3</option>
                                                 <option>option 4</option>
                                                 <option>option 5</option>
+                                                <!-- <option *ngFor="let summary of summaries" value={{summary}}>
+                                                {{summary}}
+                                            </option> -->
                                             </select>
+                                                <div *ngIf="submitted && f.hsn.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.hsn.errors.required">HSN is required</div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -238,9 +271,9 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer float-right">
-                                <button type="submit" (click)="onSave()" class="btn btn-primary ">Save</button>
-                                <button type="submit" (click)="onSaveAndContinue()"
-                                    class="btn btn-primary buttonalign">Save And Continue</button>
+                                <button type="button" (click)="onSave()" class="btn btn-info ">Save</button>
+                                <button type="button" (click)="onSaveAndContinue()"
+                                    class="btn btn-info buttonalign">Save And Continue</button>
                                     <!-- <button mat-button  (click)="onSave()">Save</button>
                                     <button mat-button  (click)="onSaveAndContinue()">Save And Continue</button> -->
 

@@ -11,7 +11,7 @@ import { AddDealerComponent } from './Project/IGMC/add-dealer/add-dealer.compone
 import { AddHSNComponent } from './Project/IGMC/add-hsn/add-hsn.component';
 import { AuthGuardService } from './auth-guard.service';
 import { CreateAccountComponent } from './Project/Accounts/create-account/create-account.component';
-
+import { ManageAccountComponent } from './Project/Accounts/manage-account/manage-account.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -27,11 +27,9 @@ const routes: Routes = [
       { path: 'adddealer', component: AddDealerComponent },
       { path: 'addhsn', component: AddHSNComponent },
       { path: 'createaccount', component: CreateAccountComponent },
-     
-
+      { path: 'manageaccount', component: ManageAccountComponent },
     ]
   },
-
   {
     path: 'igmc',
     loadChildren: () => import('./Project/IGMC/igmc.module').then(mod => mod.IGMCModule)
@@ -40,10 +38,7 @@ const routes: Routes = [
     path: 'layout',
     loadChildren: () => import('./layout/layout.module').then(mod => mod.LayoutModule)
   },
-
-
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

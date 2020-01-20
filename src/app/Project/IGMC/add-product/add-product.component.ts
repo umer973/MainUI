@@ -15,6 +15,7 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit() {
     this.addproductForm = this.formBuilder.group({
+      date: null,
       title: ['', Validators.required],
       costprice: ['', [Validators.required]],
       sellingprice: ['', [Validators.required]],
@@ -22,10 +23,12 @@ export class AddProductComponent implements OnInit {
       sgst: ['', [Validators.required]],
       category: ['', [Validators.required]],
       brand: ['', [Validators.required]],
-      pieces: [''],
-      expirydate: [''],
-      hsn: [''],
-      weight: [''],
+      pieces: ['', [Validators.required]],
+      expirydate: ['', [Validators.required]],
+      hsn: ['', [Validators.required]],
+      weight: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+
 
     });
   }
