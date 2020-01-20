@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, ]]
     });
 
 
@@ -33,28 +33,67 @@ export class LoginComponent implements OnInit {
   onLogin() {
 
 
-    this.user.password = this.loginForm.controls.password.value;
-    this.user.userName = this.loginForm.controls.username.value;
-    this.user.userType = 1;
-    this.user.userId = 1
+    if (this.loginForm.valid) {
+      this.submitted = true;
+      console.log(this.loginForm.valid);
+      this.user.password = this.loginForm.controls.password.value;
+      this.user.userName = this.loginForm.controls.username.value;
+      this.user.userType = 1;
+      this.user.userId = 1
 
-    console.log(this.user);
+      // Calling API
+      this.service.postLogin(this.user).subscribe(response => {
+        let result: any = response;
+        console.log(result);
+        if (result.StatusCode == 200) {
+         
+          if(result.Result.userName==this.user.userName && result.Result.password==this.user.password)
+          {
+            alert('Sucess')
+            this.router.navigate(['/layout'], { queryParams: { 'user': result.Result.userName } });
+          }
+          else
+          {
+            alert('Login failed')
+          }
+          console.log(result.Result)
+          
 
-    this.service.postLogin(this.user).subscribe(response => {
-      let result: any = response;
-      console.log(result);
-      if (result.StatusCode == 200) {
-        console.log(result.response);
-        this.router.navigate(['/layout'], { queryParams: { "user": this.user.userName.value } });
+        }
+        else {
+          console.log(result)
 
-      }
-      else {
-        console.log(result.StatusCode)
-      }
+        }
 
-    }, err => {
-      console.log(err);
-    });
+      }, err => {
+        alert(err)
+      });
+
+
+
+
+
+    }
+
+
+
+    //console.log(this.user);
+
+    // this.service.postLogin(this.user).subscribe(response => {
+    //   let result: any = response;
+    //   console.log(result);
+    //   if (result.StatusCode == 200) {
+    //     console.log(result.response);
+    //    // this.router.navigate(['/layout'], { queryParams: { "user": this.user.userName.value } });
+
+    //   }
+    //   else {
+    //     console.log(result.StatusCode)
+    //   }
+
+    // }, err => {
+    //   console.log(err);
+    // });
 
 
 
