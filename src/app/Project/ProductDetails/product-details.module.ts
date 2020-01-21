@@ -5,19 +5,27 @@ import { ProductDetailsRoutingModule } from './product-details-routing.module';
 import { ExpiredProductsComponent } from './expired-products/expired-products.component';
 import { ReturnExpiredComponent } from './return-expired/return-expired.component';
 import { ProductReportsComponent } from './product-reports/product-reports.component';
-
+import { ManageproductComponent } from './manageproduct/manageproduct.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MoredetailsComponent } from './moredetails/moredetails.component';
 
 
 @NgModule({
   declarations: [
     ExpiredProductsComponent,
     ReturnExpiredComponent,
-    ProductReportsComponent
+    ProductReportsComponent,
+    ManageproductComponent,
+    MoredetailsComponent
     
   ],
   imports: [
     CommonModule,
-    ProductDetailsRoutingModule
+    ProductDetailsRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot()
   ]
 })
 export class ProductDetailsModule { }

@@ -19,12 +19,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // Datepicker module
 import { LoaderComponent } from './loader/loader.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LoaderComponent,
+
 
   ],
   imports: [

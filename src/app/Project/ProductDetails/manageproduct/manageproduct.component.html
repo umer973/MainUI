@@ -1,108 +1,78 @@
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <div class="container-fluid">  
-      </div>
+        <div class="container-fluid">
+         
+        </div><!-- /.container-fluid -->
     </section>
 <section class="content">
     <div class="container-fluid">
         <div class="row ">
-            <!-- left column -->
-            <div class="col-md-12">
-                <!-- general form elements -->
-                <div class="card card-info">
-                    <div class="card-header">
-                        <h3 class="card-title">Add Dealer</h3>
-                    </div>
-                    <form [formGroup]="adddealerForm" >
-                        <div class="card-body">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input placeholder="Enter Name" id="name" formControlName="name"
-                                            class="form-control"
-                                            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                                            <div *ngIf="f.name.errors.required">Name is required</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input placeholder="Enter address" id="address"
-                                            formControlName="address" class="form-control"
-                                            [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
-                                        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-                                            <div *ngIf="f.address.errors.required">Address is required</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input placeholder="Enter Phone" id="phone" formControlName="phone"
-                                            class="form-control"
-                                            [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
-                                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                                            <div *ngIf="f.phone.errors.required">Phone is required</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input placeholder="Enter Email" id="email" formControlName="email"
-                                            class="form-control"
-                                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                                <div *ngIf="f.email.errors.required">Email is required</div>
-                                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                         
-                        </div>
-                        <!-- /.card-body -->
-
-                        <div class="card-footer float-right">
-                            <button type="button" (click)="onDealerSave()" class="btn btn-info ">Add Dealer</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.card -->
-            </div>
-        
-        </div>
-     
-    </div><!-- /.container-fluid -->
-</section>
-<!-- /.content -->
-<section class="content">
-    <div class="container-fluid">
-        <div class="row ">
             <div class="col-md-12">
 
                 <div class="card card-info">
                     <div class="card-header">
-                        <h3 class="card-title">Dealer List</h3>
+                        <h3 class="card-title">Product Details</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                  placeholder="From Date"  formControlName="fromdate"
+                                                  class="form-control"
+                                                  bsDatepicker [ngClass]="{ 'is-invalid': submitted && f.fromdate.errors }" />
+                                                  <div *ngIf="submitted && f.fromdate.errors" class="invalid-feedback">
+                                                      <div *ngIf="f.fromdate.errors.required">From Date is required</div>
+                                                  </div>
+                                          </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                  placeholder="To Date"  formControlName="todate"
+                                                  class="form-control"
+                                                  bsDatepicker [ngClass]="{ 'is-invalid': submitted && f.todate.errors }" />
+                                                  <div *ngIf="submitted && f.todate.errors" class="invalid-feedback">
+                                                      <div *ngIf="f.todate.errors.required">To Date is required</div>
+                                                  </div>
+                                          </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" (click)="onSearch()" class="btn btn-info ">Search</button>
+                                    </div>
+                                    <div class="col-md-5 float-right">
+                                    <div class="col-md-6"> <label>Show entries</label></div>
+                                    <div class="col-md-6 ">
+                                        <div class="dataTables_length" id="example1_length"> <select
+                                                    name="example1_length" aria-controls="example1"
+                                                    class="custom-select custom-select-sm form-control form-control-sm">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select> </div>
+                                    </div></div>
+                                </div>
+                                
+                            </div>
                             <div class="row">
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="dataTables_length" id="example1_length"><label>Show <select
-                                                name="example1_length" aria-controls="example1"
-                                                class="custom-select custom-select-sm form-control form-control-sm">
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select> entries</label></div>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <div id="example1_filter" class="dataTables_filter"><label>Search:<input
-                                                type="search" class="form-control form-control-sm" placeholder=""
-                                                aria-controls="example1"></label></div>
-                                </div>
+                                <div class="col-md-3">
+                                <div class="card-tools">
+                                    <div class="input-group input-group-sm">
+                                      <input type="text" class="form-control" placeholder="Search Product">
+                                      <div class="input-group-append">
+                                        <div class="btn btn-primary">
+                                          <i class="fas fa-search"></i>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div></div>
+                                 
+                              
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
@@ -113,20 +83,27 @@
                                                 <th class="sorting_desc" tabindex="0" aria-controls="example1"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Rendering engine: activate to sort column ascending"
-                                                    aria-sort="descending" style="width: 203.4px;">Name</th>
+                                                    aria-sort="descending" style="width: 203.4px;">Title</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Browser: activate to sort column ascending"
                                                     style="width: 262.6px;">
-                                                    Address</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1"
-                                                    rowspan="1" colspan="1"
-                                                    aria-label="Platform(s): activate to sort column ascending"
-                                                    style="width: 233px;">Phone No</th>
+                                                    CGST</th>
                                                     <th class="sorting" tabindex="0" aria-controls="example1"
                                                     rowspan="1" colspan="1"
-                                                    aria-label="Platform(s): activate to sort column ascending"
-                                                    style="width: 233px;">Email</th>
+                                                    aria-label="Browser: activate to sort column ascending"
+                                                    style="width: 262.6px;">
+                                                    SGST</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Browser: activate to sort column ascending"
+                                                    style="width: 262.6px;">
+                                                    Category</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Browser: activate to sort column ascending"
+                                                    style="width: 262.6px;">
+                                                    Brand</th>
                                                 <!-- <th>  <img src={{orm.img}} alt="delete" height=30px" width="30px"></th> -->
                                                 <th class="sorting" tabindex="0" aria-controls="example1"
                                                     rowspan="1" colspan="1"
@@ -140,23 +117,29 @@
                                                 <td class="sorting_1">Webkit</td>
                                                 <td>Safari 1.2</td>
                                                 <td>OSX.3</td>
-                                                <td>OSX.5</td>
+                                                <td>Safari 1.2</td>
+                                                <td>OSX.3</td>
                                                 <td class="project-actions text-right">
                                                     <a class="btn btn-primary btn-sm" href="#">
                                                         <i class="fas fa-folder">
                                                         </i>
-                                                        View
+                                                        Add
                                                     </a>
                                                     <a class="btn btn-info btn-sm" href="#">
                                                         <i class="fas fa-pencil-alt">
                                                         </i>
                                                         Edit
                                                     </a>
-                                                    <a class="btn btn-danger btn-sm" href="#">
+                                                    <a class="btn btn-primary btn-sm" data-toggle="tooltip"  title="View Item Details" href="#">
+                                                        <i class="fas fa-folder">
+                                                        </i>
+                                                        More Details
+                                                    </a>
+                                                    <!-- <a class="btn btn-danger btn-sm" href="#">
                                                         <i class="fas fa-trash">
                                                         </i>
                                                         Delete
-                                                    </a>
+                                                    </a> -->
                                                 </td>
                                             </tr>
                                         </tbody>

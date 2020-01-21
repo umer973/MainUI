@@ -65,6 +65,5 @@ export class AddProductComponent implements OnInit {
       this.submitted=true;
       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addproductForm.value))
     }
-    
   }
 }

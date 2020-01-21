@@ -23,9 +23,9 @@ export class ModuleService {
         ]
       },
       {
-        "ModuleId": 2, "ModuleName": "Transations", "path": "",
+        "ModuleId": 2, "ModuleName": "ProductDetails", "path": "",
         "Pages": [
-          { "path": "adddealer", "PageName": "Add Dealer" },
+          { "path": "manageproduct", "PageName": "Manage Product" },
         ]
       },
       {

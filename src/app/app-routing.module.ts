@@ -12,6 +12,8 @@ import { AddHSNComponent } from './Project/IGMC/add-hsn/add-hsn.component';
 import { AuthGuardService } from './auth-guard.service';
 import { CreateAccountComponent } from './Project/Accounts/create-account/create-account.component';
 import { ManageAccountComponent } from './Project/Accounts/manage-account/manage-account.component';
+import { ManageproductComponent } from './Project/ProductDetails/manageproduct/manageproduct.component';
+import { MoredetailsComponent } from './Project/ProductDetails/moredetails/moredetails.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -28,6 +30,8 @@ const routes: Routes = [
       { path: 'addhsn', component: AddHSNComponent },
       { path: 'createaccount', component: CreateAccountComponent },
       { path: 'manageaccount', component: ManageAccountComponent },
+      { path: 'manageproduct', component: ManageproductComponent },
+      { path: 'moredetails', component: MoredetailsComponent },
     ]
   },
   {
