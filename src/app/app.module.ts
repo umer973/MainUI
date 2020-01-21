@@ -15,23 +15,17 @@ import { ModuleService } from './CommonSevices/module.service';
 import { AccountsModule } from './Project/Accounts/accounts.module';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from './Project/material.module';
-<<<<<<< HEAD
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // Datepicker module
-=======
 import { LoaderComponent } from './loader/loader.component';
 
->>>>>>> 86f05472bf5184ae188c8e81ec54305984681aa9
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-<<<<<<< HEAD
-=======
     LoaderComponent,
 
->>>>>>> 86f05472bf5184ae188c8e81ec54305984681aa9
   ],
   imports: [
     BrowserModule,
@@ -43,8 +37,9 @@ import { LoaderComponent } from './loader/loader.component';
     LayoutModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule,MatInputModule,
-    MaterialModule,
+    HttpClientModule,
+    //MatInputModule,
+    //MaterialModule,
     NgbModule,
    
     

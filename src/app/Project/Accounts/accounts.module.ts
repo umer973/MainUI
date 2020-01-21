@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 //import { AccountsRoutingModule } from './accounts-routing.module';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ManageAccountComponent } from './manage-account/manage-account.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,6 +14,8 @@ import { ManageAccountComponent } from './manage-account/manage-account.componen
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule 
    // AccountsRoutingModule
   ]
 })

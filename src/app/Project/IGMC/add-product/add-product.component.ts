@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -12,7 +13,7 @@ export class AddProductComponent implements OnInit {
   addproductForm: FormGroup;
   submitted = false;
 
-  constructor(private router:Router,private formBuilder: FormBuilder,private loaderservice:LoaderService) { }
+  constructor(private router:Router, private formBuilder: FormBuilder,private loaderservice:LoaderService) { }
 
   ngOnInit() {
     this.addproductForm = this.formBuilder.group({
@@ -44,8 +45,12 @@ export class AddProductComponent implements OnInit {
     }, 5000);
     
     if (this.addproductForm.valid) {
-    
-       // return;
+      this.submitted = true;
+      console.log(this.addproductForm.valid);
+    }
+    else
+    {
+      this.submitted=true;
     }
     
    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addproductForm.value))
@@ -55,6 +60,11 @@ export class AddProductComponent implements OnInit {
     if (this.addproductForm.valid) {
        return;
     }
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addproductForm.value))
+    else
+    {
+      this.submitted=true;
+      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addproductForm.value))
+    }
+    
   }
 }

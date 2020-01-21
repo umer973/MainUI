@@ -77,6 +77,10 @@ export class LoginComponent implements OnInit {
       });
 
     }
+    else
+    {
+      this.submitted=true;
+    }
 
 
   }

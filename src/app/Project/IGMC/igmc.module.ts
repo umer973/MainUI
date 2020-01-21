@@ -9,6 +9,7 @@ import { AddDealerComponent } from '../IGMC/add-dealer/add-dealer.component';
  import { AddProductComponent } from '../IGMC/add-product/add-product.component';
 // import { MatInputModule } from '@angular/material/input';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AddCategoryComponent,
@@ -22,6 +23,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     CommonModule,
    // IGMCRoutingModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     BsDatepickerModule.forRoot()
     
   ]
