@@ -12,12 +12,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class AddProductComponent implements OnInit {
   addproductForm: FormGroup;
   submitted = false;
+  addproductarray: [];
 
-  constructor(private router:Router, private formBuilder: FormBuilder,private loaderservice:LoaderService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private loaderservice: LoaderService) { }
 
   ngOnInit() {
     this.addproductForm = this.formBuilder.group({
-      date: null,
       title: ['', Validators.required],
       costprice: ['', [Validators.required]],
       sellingprice: ['', [Validators.required]],
@@ -30,39 +30,47 @@ export class AddProductComponent implements OnInit {
       hsn: ['', [Validators.required]],
       weight: ['', [Validators.required]],
       image: ['', [Validators.required]],
-
+      companydiscount:[]
 
     });
   }
   get f() { return this.addproductForm.controls; }
 
-  onSave(){
+  onSave() {
     //this.submitted = true;
-
+    debugger
+    this.addproductarray = JSON.parse(JSON.stringify(this.addproductForm.getRawValue()))
+    console.log(this.addproductarray,"Product Form")
     this.loaderservice.show();
     setTimeout(() => {    //<<<---    using ()=> syntax
       this.loaderservice.hide();
     }, 5000);
-    
+
+    // var loadProductData:postDataInterface ={
+    //   "Mode": 0,
+    //   "CurdType":CurdType.create,
+    //   "SaveData":{
+    //     "tbladdproduct":[addproductarray]
+    //   }
+    // }
     if (this.addproductForm.valid) {
       this.submitted = true;
       console.log(this.addproductForm.valid);
+      alert("Data saved in an Array")
     }
-    else
-    {
-      this.submitted=true;
+    else {
+      this.submitted = true;
     }
-    
-   // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addproductForm.value))
+
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addproductForm.value))
   }
-  onSaveAndContinue(){
+  onSaveAndContinue() {
     this.submitted = true;
     if (this.addproductForm.valid) {
-       return;
+      return;
     }
-    else
-    {
-      this.submitted=true;
+    else {
+      this.submitted = true;
       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addproductForm.value))
     }
   }
