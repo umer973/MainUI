@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { User } from 'src/app/Models/user';
 
 @Component({
   selector: 'app-add-product',
@@ -15,7 +16,8 @@ export class AddProductComponent implements OnInit {
   addproductarray: [];
 
   constructor(private router: Router, private formBuilder: FormBuilder, private loaderservice: LoaderService) { }
-
+  usermodel=new User();
+  postmodal:any=this.usermodel.getModal();
   ngOnInit() {
     this.addproductForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -46,6 +48,10 @@ export class AddProductComponent implements OnInit {
       this.loaderservice.hide();
     }, 5000);
 
+    this.postmodal.Mode=1
+    this.postmodal.CurdType="Insert",
+    this.postmodal.SaveData.tbladdproduct.push(this.addproductarray)
+    console.log(this.postmodal);
     // var loadProductData:postDataInterface ={
     //   "Mode": 0,
     //   "CurdType":CurdType.create,
