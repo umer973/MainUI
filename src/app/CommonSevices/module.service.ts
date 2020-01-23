@@ -26,6 +26,7 @@ export class ModuleService {
         "ModuleId": 2, "ModuleName": "ProductDetails", "path": "",
         "Pages": [
           { "path": "manageproduct", "PageName": "Manage Product" },
+          { "path": "expiredproducts", "PageName": "Expired Products" }
         ]
       },
       {

@@ -14,6 +14,7 @@ import { CreateAccountComponent } from './Project/Accounts/create-account/create
 import { ManageAccountComponent } from './Project/Accounts/manage-account/manage-account.component';
 import { ManageproductComponent } from './Project/ProductDetails/manageproduct/manageproduct.component';
 import { MoredetailsComponent } from './Project/ProductDetails/moredetails/moredetails.component';
+import { ExpiredProductsComponent } from './Project/ProductDetails/expired-products/expired-products.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'manageaccount', component: ManageAccountComponent },
       { path: 'manageproduct', component: ManageproductComponent },
       { path: 'moredetails', component: MoredetailsComponent },
+      { path: 'expiredproducts', component: ExpiredProductsComponent },
     ]
   },
   {

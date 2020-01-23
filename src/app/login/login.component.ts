@@ -34,8 +34,6 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onLogin() {
-
-
     if (this.loginForm.valid) {
       this.submitted = true;
       console.log(this.loginForm.valid);
