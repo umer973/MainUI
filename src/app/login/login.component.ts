@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from '../Models/user';
 import { LoginService } from '../login.service';
 import { LoaderService } from '../loader.service';
 
@@ -15,15 +14,19 @@ import { LoaderService } from '../loader.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  user: User = new User();
   loading: boolean = false;
+  userDataArray = [];
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private service: LoginService,
     private loaderserice: LoaderService
   ) { }
+
   ngOnInit() {
+
+    this.clear();
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required,]]
@@ -34,25 +37,29 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   onLogin() {
+
     if (this.loginForm.valid) {
       this.submitted = true;
-      console.log(this.loginForm.valid);
-      this.user.password = this.loginForm.controls.password.value;
-      this.user.userName = this.loginForm.controls.username.value;
-      this.user.userType = 1;
-      this.user.userId = 1
-
+      this.userDataArray = JSON.parse(JSON.stringify(this.loginForm.getRawValue()))
+      let postDataArray: any = {
+        "Mode": 0,
+        "dsdata": {
+          "User": [this.userDataArray]
+        }
+      }
+      console.log(postDataArray)
       // Calling API
       this.loaderserice.show();
-      this.service.postLogin(this.user).subscribe(response => {
+      this.service.postLogin(postDataArray).subscribe(response => {
         let result: any = response;
         console.log(result);
         if (result.StatusCode == 200) {
 
-          if (result.Result.userName == this.user.userName && result.Result.password == this.user.password) {
+          if (result.Result != null) {
             alert('Sucess')
             localStorage.setItem('isLoggedin', 'true');
             this.router.navigate(['/layout'], { queryParams: { 'user': result.Result.userName } });
+            this.clear();
           }
           else {
             alert('Login failed')
@@ -63,7 +70,7 @@ export class LoginComponent implements OnInit {
 
         }
         else {
-          alert(result)
+          alert("Internal Server Error")
           this.loaderserice.hide();
 
         }
@@ -75,12 +82,16 @@ export class LoginComponent implements OnInit {
       });
 
     }
-    else
-    {
-      this.submitted=true;
+    else {
+      this.submitted = true;
     }
 
 
+  }
+
+  clear()
+  {
+   
   }
 
 
