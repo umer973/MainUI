@@ -30,14 +30,22 @@ export class ModuleService {
         ]
       },
       {
-        "ModuleId": 2, "ModuleName": "Accounts", "path": "",
+        "ModuleId": 3, "ModuleName": "Expenses", "path": "",
+        "Pages": [
+          { "path": "addexpenses", "PageName": "Add Expenses" },
+         
+        ]
+      },
+      {
+        "ModuleId": 4, "ModuleName": "Accounts", "path": "",
         "Pages": [
           { "path": "createaccount", "PageName": "Create Account" },
           { "path": "manageaccount", "PageName": "Manage Account" },
         ]
       },
-      { "ModuleId": 3, "ModuleName": "Reports", "path": "" },
-      { "ModuleId": 4, "ModuleName": "User Account", "path": "" },
+
+      { "ModuleId": 5, "ModuleName": "Reports", "path": "" },
+      { "ModuleId": 6, "ModuleName": "User Account", "path": "" },
     ]
    
     return  Modules;

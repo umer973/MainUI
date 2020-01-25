@@ -12,7 +12,7 @@ export class LoginService {
 
   }
     postLogin(data:any) {
-    return this.http.post(this.url.BaseUrl + "Default", data);
+    return this.http.post(this.url.BaseUrl + "Login", data);
   }
 
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader.service';
 import { AddBrandService } from './add-brand.service';
+import { DialogService } from 'src/app/dialog/dialog.service';
 
 @Component({
   selector: 'app-add-brand',
@@ -14,7 +15,8 @@ export class AddBrandComponent implements OnInit {
   submitted = false;
   createbrandarray = []
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private service: AddBrandService, private loaderservice: LoaderService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder,
+     private service: AddBrandService, private loaderservice: LoaderService,private dialog: DialogService) { }
 
   ngOnInit() {
     this.addbrandForm = this.formBuilder.group({
@@ -53,6 +55,19 @@ export class AddBrandComponent implements OnInit {
       return;
 
     }
+  }
+  
+  onDelete(data) {
+    console.log(data);
+  }
+  
+  public openConfirmationDialog(data) {
+    this.dialog.confirm('Delete Record', 'Do you want to delete this record. ?')
+      .then(res => {
+        if (res == true) {
+          this.onDelete(data);
+        }
+      });
   }
 }
 

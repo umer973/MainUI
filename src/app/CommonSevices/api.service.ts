@@ -8,11 +8,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  //BaseUrl = 'http://192.168.0.194:8006/Api/'
+  BaseUrl = 'http://warals1.ddns.net:8006//Api/'
 
-  BaseUrl='http://localhost:50394/API/'
-
-
-
+  //BaseUrl='http://localhost:50394/API/'
 
 }

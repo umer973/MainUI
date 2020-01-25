@@ -16,8 +16,8 @@ import { AccountsModule } from './Project/Accounts/accounts.module';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from './Project/material.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-// Datepicker module
 import { LoaderComponent } from './loader/loader.component';
+import { OfficeExpensesModule } from './Project/OfficeExpenses/office-expenses.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { LoaderComponent } from './loader/loader.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    OfficeExpensesModule,
     //MatInputModule,
     //MaterialModule,
     NgbModule,

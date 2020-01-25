@@ -3,9 +3,6 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { LoaderService } from '../loader.service';
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +18,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private service: LoginService,
-    private loaderserice: LoaderService
+    private loaderservice: LoaderService
   ) { }
 
   ngOnInit() {
@@ -49,14 +46,14 @@ export class LoginComponent implements OnInit {
       }
       console.log(postDataArray)
       // Calling API
-      this.loaderserice.show();
+      this.loaderservice.show();
       this.service.postLogin(postDataArray).subscribe(response => {
         let result: any = response;
         console.log(result);
         if (result.StatusCode == 200) {
 
           if (result.Result != null) {
-            alert('Sucess')
+           // alert('Sucess')
             localStorage.setItem('isLoggedin', 'true');
             this.router.navigate(['/layout'], { queryParams: { 'user': result.Result.userName } });
             this.clear();
@@ -65,19 +62,19 @@ export class LoginComponent implements OnInit {
             alert('Login failed')
             localStorage.setItem('isLoggedin', 'true');
           }
-          this.loaderserice.hide();
+          this.loaderservice.hide();
 
 
         }
         else {
           alert("Internal Server Error")
-          this.loaderserice.hide();
+          this.loaderservice.hide();
 
         }
 
       }, err => {
         alert('An error occured please try again');
-        this.loaderserice.hide();
+        this.loaderservice.hide();
 
       });
 
@@ -86,9 +83,7 @@ export class LoginComponent implements OnInit {
       this.submitted = true;
     }
 
-
   }
-
   clear()
   {
    
