@@ -10,7 +10,7 @@ export class AddproductService {
 
   }
     postproduct(data:any) {
-    return this.http.post(this.url.BaseUrl + "Default", data);
+    return this.http.post(this.url.BaseUrl + "product", data);
   }
 
 }

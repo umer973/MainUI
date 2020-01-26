@@ -51,24 +51,19 @@ export class AddProductComponent implements OnInit {
       let postDataArray: any = {
         "Mode": 0,
         "dsdata": {
-          "User": [this.addproductarray]
+          "Product": [this.addproductarray]
         }
       }
       this.loaderservice.show();
       this.service.postproduct(postDataArray).subscribe(response => {
         let result: any = response;
-    // Calling API
-    // this.postmodal.SaveData.tbladdproduct.push(this.addproductarray)
-    // console.log(this.postmodal);
     alert("Data saved in an Array")
-    
-  
   if (result.StatusCode == 200) {
 
     if (result.Result != null) {
       alert('Sucess')
-      localStorage.setItem('isLoggedin', 'true');
-      this.router.navigate(['/layout'], { queryParams: { 'user': result.Result.userName } });
+     // localStorage.setItem('isLoggedin', 'true');
+      this.router.navigate(['/AddProduct'])
      // this.clear();
     }
     else {

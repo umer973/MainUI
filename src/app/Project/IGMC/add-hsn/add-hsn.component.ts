@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader.service';
 import { AddHSNService } from './add-hsn.service';
-
+import { DialogService } from 'src/app/dialog/dialog.service';
 @Component({
   selector: 'app-add-hsn',
   templateUrl: './add-hsn.component.html',
@@ -13,45 +13,53 @@ export class AddHSNComponent implements OnInit {
   addhsnForm: FormGroup;
   submitted = false;
   addhsnarray = []
-  constructor(private router: Router, private formBuilder: FormBuilder,private service: AddHSNService, private loaderservice: LoaderService) { }
-
+  constructor(private router: Router, private formBuilder: FormBuilder,
+    private service: AddHSNService, private loaderservice: LoaderService, private dialog: DialogService) { }
   ngOnInit() {
     this.addhsnForm = this.formBuilder.group({
-      hsnname: ['', Validators.required]
+      HsnName: ['', Validators.required]
     });
-
   }
-
   get f() { return this.addhsnForm.controls; }
   onHsnSave(){
-   
-    if (this.addhsnForm.valid) {
+   if (this.addhsnForm.valid) {
       this.submitted = true;
-      this.router.navigate(['/AddHsn'])
       this.addhsnarray = JSON.parse(JSON.stringify(this.addhsnForm.getRawValue()))
-      console.log(this.addhsnarray, "Account Form")
-      this.loaderservice.show();
-      setTimeout(() => {    //<<<---    using ()=> syntax
-        this.loaderservice.hide();
-      }, 5000);
+      console.log(this.addhsnarray, "HSN Form")
+        let postDataArray: any = {
+          "Mode": 0,
+          "dsdata": {
+            "Hsn": [this.addhsnarray]
+          }
+        }
+        this.loaderservice.show();
+        this.service.posthsn(postDataArray).subscribe(response => {
+          let result: any = response;
+          alert("Data saved in an Array")
+          if (result.StatusCode == 200) {
+            if (result.Result != null) {
+              alert('Sucess')
+              this.router.navigate(['/AddHsn'])
+              // this.clear();
+            }
+            else {
+              alert('Login failed')
+              localStorage.setItem('isLoggedin', 'true');
+            }
+            this.loaderservice.hide();
+          }
+          else {
+            alert("Internal Server Error")
+            this.loaderservice.hide();
+          }
+        }, err => {
+          alert('An error occured please try again');
+          this.loaderservice.hide();
   
-      // Calling API
-      // this.loaderserice.show();
-      // this.service.postLogin(this.user).subscribe(response => {
-      //   let result: any = response;
-      //   console.log(result);
-      // this.postmodal.Mode=1
-      // this.postmodal.CurdType="Insert",
-      // this.postmodal.SaveData.tbladdproduct.push(this.createaccountarray)
-      // console.log(this.postmodal);
-      alert("Data saved in an Array")
+        });
+      }
+      else {
+        this.submitted = true;
+      }
     }
-
-  else {
-    this.submitted = true;
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addhsnForm.value))
-    return;
-
-  }
-
-}}
+}

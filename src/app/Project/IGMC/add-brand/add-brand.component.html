@@ -27,17 +27,17 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input placeholder="Enter BrandName" id="brandname"
-                                                formControlName="brandname" class="form-control"
-                                                [ngClass]="{ 'is-invalid': submitted && f.brandname.errors }" />
-                                            <div *ngIf="submitted && f.brandname.errors" class="invalid-feedback">
-                                                <div *ngIf="f.brandname.errors.required">Brand Name is required</div>
+                                            <input placeholder="Enter BrandName" id="BrandName"
+                                                formControlName="BrandName" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.BrandName.errors }" />
+                                            <div *ngIf="submitted && f.BrandName.errors" class="invalid-feedback">
+                                                <div *ngIf="f.BrandName.errors.required">Brand Name is required</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="chooseimage">
+                                                    <input type="file" class="custom-file-input" id="ImagePath"  formControlName="ImagePath">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose Image
                                                     </label>
                                                 </div>
@@ -52,7 +52,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <textarea class="form-control" rows="3"
+                                            <textarea class="form-control" rows="3" formControlName="Description"
                                                 placeholder="Enter Description ..."></textarea>
 
                                         </div>

@@ -27,36 +27,44 @@ export class AddDealerComponent implements OnInit {
   }
   get f() { return this.adddealerForm.controls; }
   onDealerSave() {
-
     if (this.adddealerForm.valid) {
       this.submitted = true;
-      this.router.navigate(['/AddDealer'])
-
       this.adddealerarray = JSON.parse(JSON.stringify(this.adddealerForm.getRawValue()))
       console.log(this.adddealerarray, "Account Form")
+      let postDataArray: any = {
+        "Mode": 0,
+        "dsdata": {
+          "Dealer": [this.adddealerarray]
+        }
+      }
       this.loaderservice.show();
-      setTimeout(() => {    //<<<---    using ()=> syntax
+      this.service.postdealer(postDataArray).subscribe(response => {
+        let result: any = response;
+        alert("Data saved in an Array")
+        if (result.StatusCode == 200) {
+          if (result.Result != null) {
+            alert('Sucess')
+            this.router.navigate(['/AddDealer'])
+            // this.clear();
+          }
+          else {
+            alert('Login failed')
+            localStorage.setItem('isLoggedin', 'true');
+          }
+          this.loaderservice.hide();
+        }
+        else {
+          alert("Internal Server Error")
+          this.loaderservice.hide();
+        }
+      }, err => {
+        alert('An error occured please try again');
         this.loaderservice.hide();
-      }, 5000);
 
-      // Calling API
-      // this.loaderserice.show();
-      // this.service.postLogin(this.user).subscribe(response => {
-      //   let result: any = response;
-      //   console.log(result);
-      // this.postmodal.Mode=1
-      // this.postmodal.CurdType="Insert",
-      // this.postmodal.SaveData.tbladdproduct.push(this.createaccountarray)
-      // console.log(this.postmodal);
-      alert("Data saved in an Array")
-
+      });
     }
     else {
       this.submitted = true;
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.adddealerForm.value))
-      return;
     }
-
   }
-
 }

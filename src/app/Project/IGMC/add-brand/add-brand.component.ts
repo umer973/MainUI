@@ -16,11 +16,19 @@ export class AddBrandComponent implements OnInit {
   createbrandarray = []
 
   constructor(private router: Router, private formBuilder: FormBuilder,
-     private service: AddBrandService, private loaderservice: LoaderService,private dialog: DialogService) { }
+    private service: AddBrandService, private loaderservice: LoaderService, private dialog: DialogService) { }
 
   ngOnInit() {
+
+    this.service.getBrand().subscribe(
+      res => {
+        console.log(res);
+      }
+    )
     this.addbrandForm = this.formBuilder.group({
-      brandname: ['', Validators.required]
+      BrandName: ['', Validators.required],
+      ImagePath: [''],
+      Description: ['']
     });
 
   }
@@ -29,38 +37,49 @@ export class AddBrandComponent implements OnInit {
   onBrandSave() {
     if (this.addbrandForm.valid) {
       this.submitted = true;
-      this.router.navigate(['/AddBrand'])
       this.createbrandarray = JSON.parse(JSON.stringify(this.addbrandForm.getRawValue()))
-      console.log(this.createbrandarray, "Account Form")
+      console.log(this.createbrandarray, "Brand Form")
+      let postDataArray: any = {
+        "Mode": 0,
+        "dsdata": {
+          "Brand": [this.createbrandarray]
+        }
+      }
       this.loaderservice.show();
-      setTimeout(() => {    //<<<---    using ()=> syntax
+      this.service.postbrand(postDataArray).subscribe(response => {
+        let result: any = response;
+        alert("Data saved in an Array")
+        if (result.StatusCode == 200) {
+          if (result.Result != null) {
+            alert('Sucess')
+            this.router.navigate(['/AddBrand'])
+            // this.clear();
+          }
+          else {
+            alert('Login failed')
+            localStorage.setItem('isLoggedin', 'true');
+          }
+          this.loaderservice.hide();
+        }
+        else {
+          alert("Internal Server Error")
+          this.loaderservice.hide();
+        }
+      }, err => {
+        alert('An error occured please try again');
         this.loaderservice.hide();
-      }, 5000);
 
-      // Calling API
-      // this.loaderserice.show();
-      // this.service.postLogin(this.user).subscribe(response => {
-      //   let result: any = response;
-      //   console.log(result);
-      // this.postmodal.Mode=1
-      // this.postmodal.CurdType="Insert",
-      // this.postmodal.SaveData.tbladdproduct.push(this.createaccountarray)
-      // console.log(this.postmodal);
-      alert("Data saved in an Array")
-
+      });
     }
     else {
       this.submitted = true;
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addbrandForm.value))
-      return;
-
     }
   }
-  
+
   onDelete(data) {
     console.log(data);
   }
-  
+
   public openConfirmationDialog(data) {
     this.dialog.confirm('Delete Record', 'Do you want to delete this record. ?')
       .then(res => {
