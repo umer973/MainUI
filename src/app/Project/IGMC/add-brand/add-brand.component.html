@@ -22,7 +22,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form [formGroup]="addbrandForm" >
+                        <form [formGroup]="addbrandForm">
                             <div class="card-body">
                                 <div class="form-group">
                                     <div class="row">
@@ -37,7 +37,8 @@
                                         <div class="col-md-6">
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="ImagePath"  formControlName="ImagePath">
+                                                    <input type="file" class="custom-file-input" id="ImagePath"
+                                                        formControlName="ImagePath">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose Image
                                                     </label>
                                                 </div>
@@ -65,7 +66,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer float-right">
-                                <button type="button" (click)="onBrandSave()" class="btn btn-info ">Save</button>
+                                <button type="button" (click)="onBrandSave()" class="btn btn-info ">{{buttonMode}}</button>
                             </div>
                         </form>
                     </div>
@@ -95,25 +96,26 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
                                         <div class="dataTables_length" id="example1_length"><label>Show <select
-                                                    name="example1_length" aria-controls="example1"
+                                                    name="example1_length" aria-controls="example1" [(ngModel)]="search"
                                                     class="custom-select custom-select-sm form-control form-control-sm">
+                                                    <option value="5">5</option>
                                                     <option value="10">10</option>
-                                                    <option value="25">25</option>
-                                                    <option value="50">50</option>
-                                                    <option value="100">100</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
                                                 </select> entries</label></div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="card-tools">
                                             <div class="input-group input-group-sm">
-                                              <input type="text" class="form-control" placeholder="Search ">
-                                              <div class="input-group-append">
-                                                <div class="btn btn-primary">
-                                                  <i class="fas fa-search"></i>
+                                                <input type="text" class="form-control" placeholder="Search">
+                                                <div class="input-group-append">
+                                                    <div class="btn btn-primary">
+                                                        <i class="fas fa-search"></i>
+                                                    </div>
                                                 </div>
-                                              </div>
                                             </div>
-                                          </div></div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -143,31 +145,36 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Webkit</td>
-                                                    <td>Safari 1.2</td>
-                                                    <td>OSX.3</td>
-                                                    <td class="project-actions text-right">
-                                                        <a class="btn btn-primary btn-sm" href="#">
-                                                            <i class="fas fa-folder">
-                                                            </i>
-                                                            View
-                                                        </a>
-                                                        <a class="btn btn-info btn-sm" href="#">
-                                                            <i class="fas fa-pencil-alt">
-                                                            </i>
-                                                            Edit
-                                                        </a>
-                                                        <a class="btn btn-danger btn-sm" href="onDelete">
-                                                            <i class="fas fa-trash">
-                                                            </i>
-                                                            Delete
-                                                        </a>
-                                                         <!-- <button type="button" rel="tooltip" title="Delete" (click)="openConfirmationDialog(data)"
+                                                <tr role="row" class="odd" *ngFor="let brand of resultData;let i=index">
+
+                                                    <ng-container *ngIf="search>=i">
+                                                        <td class="sorting_1">{{brand.BrandName}}</td>
+                                                        <td>{{brand.Description}}</td>
+                                                        <td>{{brand.ImagePath}}</td>
+                                                        <td class="project-actions text-right">
+                                                            <a class="btn btn-primary btn-sm">
+                                                                <i class="fas fa-folder">
+                                                                </i>
+                                                                View
+                                                            </a>
+                                                            <a class="btn btn-info btn-sm" (click)="onEdit(brand)">
+                                                                <i class="fas fa-pencil-alt">
+                                                                </i>
+                                                                Edit
+                                                            </a>
+                                                            <a class="btn btn-danger btn-sm"
+                                                                (click)="openConfirmationDialog(data)">
+                                                                <i class="fas fa-trash">
+                                                                </i>
+                                                                Delete
+                                                            </a>
+                                                            <!-- <button type="button" rel="tooltip" title="Delete" (click)="openConfirmationDialog(data)"
                                 class="btn btn-danger btn-link btn-sm ">
                                 <i class="material-icons">close</i>
                             </button> -->
-                                                    </td>
+                                                        </td>
+                                                    </ng-container>
+
                                                 </tr>
                                             </tbody>
 
@@ -177,8 +184,8 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-5">
                                         <div class="dataTables_info" id="example1_info" role="status"
-                                            aria-live="polite">Showing 1 to 10
-                                            of 57 entries</div>
+                                            aria-live="polite">Showing 1 to {{search}}
+                                            of {{resultData.length}} entries</div>
                                     </div>
                                     <div class="col-sm-12 col-md-7">
                                         <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
@@ -186,24 +193,16 @@
                                                 <li class="paginate_button page-item previous disabled"
                                                     id="example1_previous"><a href="#" aria-controls="example1"
                                                         data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                                <li class="paginate_button page-item active"><a href="#"
-                                                        aria-controls="example1" data-dt-idx="1" tabindex="0"
-                                                        class="page-link">1</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="example1" data-dt-idx="2" tabindex="0"
-                                                        class="page-link">2</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="example1" data-dt-idx="3" tabindex="0"
-                                                        class="page-link">3</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="example1" data-dt-idx="4" tabindex="0"
-                                                        class="page-link">4</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="example1" data-dt-idx="5" tabindex="0"
-                                                        class="page-link">5</a></li>
-                                                <li class="paginate_button page-item "><a href="#"
-                                                        aria-controls="example1" data-dt-idx="6" tabindex="0"
-                                                        class="page-link">6</a></li>
+
+                                                <li class="paginate_button page-item active"
+                                                    *ngFor="let count of resultData;let i=index">
+                                                    <ng-container *ngIf="i<4">
+                                                        <a href="#" aria-controls="example1" data-dt-idx="1"
+                                                            tabindex="0" class="page-link">{{i+1}}</a>
+                                                    </ng-container>
+                                                </li>
+
+
                                                 <li class="paginate_button page-item next" id="example1_next"><a
                                                         href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
                                                         class="page-link">Next</a>

@@ -14,17 +14,18 @@ export class AddBrandComponent implements OnInit {
   addbrandForm: FormGroup;
   submitted = false;
   createbrandarray = []
+  resultData = []
+  search:number=5;
+  searchArray=[];
+  buttonMode="Save";
 
   constructor(private router: Router, private formBuilder: FormBuilder,
     private service: AddBrandService, private loaderservice: LoaderService, private dialog: DialogService) { }
 
   ngOnInit() {
 
-    this.service.getBrand().subscribe(
-      res => {
-        console.log(res);
-      }
-    )
+    this.getAllBrands();
+
     this.addbrandForm = this.formBuilder.group({
       BrandName: ['', Validators.required],
       ImagePath: [''],
@@ -33,7 +34,32 @@ export class AddBrandComponent implements OnInit {
 
   }
 
+  getAllBrands() {
+    this.loaderservice.show();
+    this.service.getBrand().subscribe(
+      res => {
+        let result: any = res;
+        if (result.StatusCode == 200) {
+          this.resultData = result.Result;
+          console.log(this.resultData);
+        }
+        else {
+          alert(result.StatusCode)
+        }
+
+      }, err => {
+
+        alert('An error occurred')
+      }
+
+    )
+
+    this.loaderservice.hide();
+
+  }
+
   get f() { return this.addbrandForm.controls; }
+
   onBrandSave() {
     if (this.addbrandForm.valid) {
       this.submitted = true;
@@ -48,16 +74,15 @@ export class AddBrandComponent implements OnInit {
       this.loaderservice.show();
       this.service.postbrand(postDataArray).subscribe(response => {
         let result: any = response;
-        alert("Data saved in an Array")
+
         if (result.StatusCode == 200) {
           if (result.Result != null) {
-            alert('Sucess')
-            this.router.navigate(['/AddBrand'])
-            // this.clear();
+            alert('Data Saved')
+            this.getAllBrands();
+
           }
           else {
-            alert('Login failed')
-            localStorage.setItem('isLoggedin', 'true');
+
           }
           this.loaderservice.hide();
         }
@@ -76,6 +101,12 @@ export class AddBrandComponent implements OnInit {
     }
   }
 
+  onEdit(index)
+  {
+    console.log(index);
+    this.addbrandForm.controls.BrandName.setValue(index.BrandName)
+    this.buttonMode="Update";
+  }
   onDelete(data) {
     console.log(data);
   }
