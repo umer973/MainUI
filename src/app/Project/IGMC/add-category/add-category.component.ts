@@ -23,9 +23,9 @@ export class AddCategoryComponent implements OnInit {
     }
   )
     this.addcategoryForm = this.formBuilder.group({
-      CategoryName: ['', Validators.required],
-      ImagePath: [''],
-      Description: ['']
+      categoryname: ['', Validators.required],
+      imagepath: [''],
+      description: ['']
     });
 
   }

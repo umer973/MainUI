@@ -17,7 +17,7 @@ export class AddHSNComponent implements OnInit {
     private service: AddHSNService, private loaderservice: LoaderService, private dialog: DialogService) { }
   ngOnInit() {
     this.addhsnForm = this.formBuilder.group({
-      HsnName: ['', Validators.required]
+      hsnname: ['', Validators.required]
     });
   }
   get f() { return this.addhsnForm.controls; }

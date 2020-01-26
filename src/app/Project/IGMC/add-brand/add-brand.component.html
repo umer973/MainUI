@@ -27,18 +27,18 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input placeholder="Enter BrandName" id="BrandName"
-                                                formControlName="BrandName" class="form-control"
-                                                [ngClass]="{ 'is-invalid': submitted && f.BrandName.errors }" />
-                                            <div *ngIf="submitted && f.BrandName.errors" class="invalid-feedback">
-                                                <div *ngIf="f.BrandName.errors.required">Brand Name is required</div>
+                                            <input placeholder="Enter BrandName" id="brandname"
+                                                formControlName="brandname" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.brandname.errors }" />
+                                            <div *ngIf="submitted && f.brandname.errors" class="invalid-feedback">
+                                                <div *ngIf="f.brandname.errors.required">Brand Name is required</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="ImagePath"
-                                                        formControlName="ImagePath">
+                                                        formControlName="imagepath">
                                                     <label class="custom-file-label" for="exampleInputFile">Choose Image
                                                     </label>
                                                 </div>
@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <textarea class="form-control" rows="3" formControlName="Description"
+                                            <textarea class="form-control" rows="3" formControlName="description"
                                                 placeholder="Enter Description ..."></textarea>
 
                                         </div>
@@ -148,8 +148,8 @@
                                                 <tr role="row" class="odd" *ngFor="let brand of resultData;let i=index">
 
                                                     <ng-container *ngIf="search>=i">
-                                                        <td class="sorting_1">{{brand.BrandName}}</td>
-                                                        <td>{{brand.Description}}</td>
+                                                        <td class="sorting_1">{{brand.brandname}}</td>
+                                                        <td>{{brand.description}}</td>
                                                         <td>{{brand.ImagePath}}</td>
                                                         <td class="project-actions text-right">
                                                             <a class="btn btn-primary btn-sm">
@@ -157,7 +157,7 @@
                                                                 </i>
                                                                 View
                                                             </a>
-                                                            <a class="btn btn-info btn-sm" (click)="onEdit(brand)">
+                                                            <a class="btn btn-info btn-sm" (click)="onEdit(i)">
                                                                 <i class="fas fa-pencil-alt">
                                                                 </i>
                                                                 Edit

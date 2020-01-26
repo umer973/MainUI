@@ -27,9 +27,10 @@ export class AddBrandComponent implements OnInit {
     this.getAllBrands();
 
     this.addbrandForm = this.formBuilder.group({
-      BrandName: ['', Validators.required],
-      ImagePath: [''],
-      Description: ['']
+      brandname: ['', Validators.required],
+      imagepath: [''],
+      description: [''],
+      brandid:[0]
     });
 
   }
@@ -104,7 +105,10 @@ export class AddBrandComponent implements OnInit {
   onEdit(index)
   {
     console.log(index);
-    this.addbrandForm.controls.BrandName.setValue(index.BrandName)
+    //this.addbrandForm.controls.BrandName.setValue(index.BrandName)
+    var editRow=this.resultData[index]
+    console.log(editRow,"Testtttt")
+    this.addbrandForm.patchValue(editRow)
     this.buttonMode="Update";
   }
   onDelete(data) {

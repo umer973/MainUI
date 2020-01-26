@@ -12,20 +12,13 @@ export class DialogComponent implements OnInit {
   @Input() message: string;
   @Input() btnOkText: string;
   @Input() btnCancelText: string;
-
   constructor(private activeModal: NgbActiveModal) { }
-
   ngOnInit() {
   }
-
   public decline() {
     this.activeModal.close(false);
   }
-
   public accept() {
     this.activeModal.close(true);
   }
-
-  
-
 }
