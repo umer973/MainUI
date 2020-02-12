@@ -5,17 +5,6 @@
 
         </div><!-- /.container-fluid -->
     </section>
-       
-    <div class="row ">
-        <div class="col-md-3 adddesign">
-            <button type="button" class="btn btn-info btn-sm "
-            data-toggle="modal" data-target="#openhsnModal">
-            Add HSN
-        </button>
-        
-        </div>
-        </div>
-    <!-- /.content  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
     <section class="content">
         <div class="container-fluid">
             <div class="row ">
@@ -23,58 +12,93 @@
 
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">HSN COde List</h3>
+                            <h3 class="card-title">Product Details</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="dataTables_length" id="example1_length"><label>Show <select
-                                                    name="example1_length" aria-controls="example1"
-                                                    class="custom-select custom-select-sm form-control form-control-sm">
-                                                    <option value="10">10</option>
-                                                    <option value="25">25</option>
-                                                    <option value="50">50</option>
-                                                    <option value="100">100</option>
-                                                </select> entries</label></div>
-                                    </div>
                                     <div class="col-md-3">
                                         <div class="card-tools">
                                             <div class="input-group input-group-sm">
-                                              <input type="text" class="form-control" placeholder="Search ">
-                                              <div class="input-group-append">
-                                                <div class="btn btn-primary">
-                                                  <i class="fas fa-search"></i>
+                                                <input type="text" class="form-control"
+                                                    placeholder="Search Product By Name">
+                                                <div class="input-group-append">
+                                                    <div class="btn btn-primary">
+                                                        <i class="fas fa-search"></i>
+                                                    </div>
                                                 </div>
-                                              </div>
                                             </div>
-                                          </div></div>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="col-md-3 "></div>
+                                    <div class="col-md-3 float-right">
+                                                <a href="invoice-print.html" target="_blank" class="btn btn-info btn-sm float-right"><i
+                                                    class="fa fa-print"></i> Print</a>
+                                                <button type="button" class="btn btn-info btn-sm float-right"
+                                                    style="margin-right: 5px;">
+                                                    <i class="fa fa-download"></i> Generate PDF
+                                                </button>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
+                              
+                                        <!-- this row will not appear when printing -->
+                                        <!-- <div class="row no-print">
+                                            <div class="col-12">
+                                              
+                                            </div>
+                                        </div> -->
+                                        <div class="row">
                                         <table id="example1" class="table table-bordered table-striped dataTable"
                                             role="grid" aria-describedby="example1_info">
                                             <thead>
                                                 <tr role="row">
                                                     <th class="sorting_desc" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Rendering engine: activate to sort column ascending"
+                                                    aria-sort="descending" style="width: 203.4px;">Product Name</th>
+                                                    <th class="sorting_desc" tabindex="0" aria-controls="example1"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Rendering engine: activate to sort column ascending"
-                                                        aria-sort="descending" style="width: 203.4px;">Brand</th>
+                                                        aria-sort="descending" style="width: 203.4px;">HSN Code</th>
                                                     <th class="sorting" tabindex="0" aria-controls="example1"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Browser: activate to sort column ascending"
                                                         style="width: 262.6px;">
-                                                        Description</th>
+                                                        No. of Pieces</th>
                                                     <th class="sorting" tabindex="0" aria-controls="example1"
                                                         rowspan="1" colspan="1"
-                                                        aria-label="Platform(s): activate to sort column ascending"
-                                                        style="width: 233px;">Image</th>
+                                                        aria-label="Browser: activate to sort column ascending"
+                                                        style="width: 262.6px;">
+                                                        Remaining Items</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Browser: activate to sort column ascending"
+                                                        style="width: 262.6px;">
+                                                        Buying Date</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Browser: activate to sort column ascending"
+                                                        style="width: 262.6px;">
+                                                        Cost Price</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Browser: activate to sort column ascending"
+                                                        style="width: 262.6px;">
+                                                        Selling Price</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Browser: activate to sort column ascending"
+                                                        style="width: 262.6px;">
+                                                        Expiry Date</th>
+                                                    <th >
+                                                     <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="option1">
+                                                            <label class="form-check-label">All</label>
+                                                          </div>
+                                                    </th>
                                                     <!-- <th>  <img src={{orm.img}} alt="delete" height=30px" width="30px"></th> -->
-                                                    <th class="sorting" tabindex="0" aria-controls="example1"
-                                                        rowspan="1" colspan="1"
-                                                        aria-label="Engine version: activate to sort column ascending"
-                                                        style="width: 500.6px;">Action</th>
 
                                                 </tr>
                                             </thead>
@@ -83,29 +107,22 @@
                                                     <td class="sorting_1">Webkit</td>
                                                     <td>Safari 1.2</td>
                                                     <td>OSX.3</td>
-                                                    <td class="project-actions text-right">
-                                                        <a class="btn btn-primary btn-sm" href="#">
-                                                            <i class="fas fa-folder">
-                                                            </i>
-                                                            View
-                                                        </a>
-                                                        <a class="btn btn-info btn-sm" href="#">
-                                                            <i class="fas fa-pencil-alt">
-                                                            </i>
-                                                            Edit
-                                                        </a>
-                                                        <a class="btn btn-danger btn-sm" href="#">
-                                                            <i class="fas fa-trash">
-                                                            </i>
-                                                            Delete
-                                                        </a>
-                                                    </td>
+                                                    <td>Safari 1.2</td>
+                                                    <td>OSX.3</td>
+                                                    <td>OSX.3</td>
+                                                    <td>Safari 1.2</td>
+                                                    <td>OSX.3</td>
+                                                    <td > 
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="option1">
+                                                           
+                                                          </div> </td>
+
                                                 </tr>
                                             </tbody>
 
-                                        </table>
-                                    </div>
-                                </div>
+                                        </table></div>
+                    
                                 <div class="row">
                                     <div class="col-sm-12 col-md-5">
                                         <div class="dataTables_info" id="example1_info" role="status"
@@ -152,46 +169,4 @@
             </div>
         </div>
     </section>
-    <!-- /.card-body -->
-</div>
-
-<!-- Add Modal -->
-<div class="modal fade bd-example-modal-lg" id="openhsnModal" tabindex="-1" role="dialog"
-    aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Brand</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-               <!-- form start -->
-               <form [formGroup]="addhsnForm" >
-                <div class="card-body">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input placeholder="Enter HSN COde" id="hsnname" formControlName="hsnname"
-                                    class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f.hsnname.errors }" />
-                                <div *ngIf="submitted && f.hsnname.errors" class="invalid-feedback">
-                                    <div *ngIf="f.hsnname.errors.required">HSN Code is required</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-
-            </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="onHsnSave()" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add</button>
-            </div>
-        </div>
-    </div>
 </div>

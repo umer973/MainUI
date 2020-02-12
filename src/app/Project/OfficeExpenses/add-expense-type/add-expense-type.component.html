@@ -13,99 +13,14 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row ">
-                <button type="button" (click)="openExpenseCategory()"  class="btn btn-info ">Add Expense Category</button>
-
+                <button type="button" class="btn btn-info btn-sm"
+                data-toggle="modal" data-target="#openexpensesModal">
+               
+                Add Expense Category
+            </button>
                 </div></div></section>
    
-    <section class="content">
-        <div class="container-fluid">
-           
-            <div class="row ">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <!-- general form elements -->
-                    <div class="card card-info">
-                        <div class="card-header">
-                          <h3 class="card-title">Add Expenses</h3>
-                        </div>
-                            <form [formGroup]="addexpensesForm" >
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                                <select formControlName="categorytype" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
-                                                <option value="0">--Select Category--</option>
-                                                <option>option 1</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
-                                                <!-- <option *ngFor="let summary of summaries" value={{summary}}>
-                                                {{summary}}
-                                            </option> -->
-                                            </select>
-                                                <div *ngIf="submitted && f.categorytype.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.categorytype.errors.required">Category Type is required</div>
-                                                </div>
-                                            
-                                        </div>
-                                        <div class="col-md-6">
-                                            <textarea class="form-control" rows="3"  formControlName="description"
-                                                placeholder="Enter Description ..."></textarea>
-                                           
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                          
-                                            <div class="input-group">
-                                                <input type="text"
-                                                      placeholder="Date"  formControlName="ondate"
-                                                      class="form-control"
-                                                      bsDatepicker [ngClass]="{ 'is-invalid': submitted && f.ondate.errors }" />
-                                                      <div *ngIf="submitted && f.ondate.errors" class="invalid-feedback">
-                                                          <div *ngIf="f.ondate.errors.required">Date is required</div>
-                                                      </div>
-                                              </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-            
-                                            <input placeholder="Enter Amount" id="amount"
-                                                formControlName="amount" class="form-control"
-                                                [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
-                                            <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
-                                                <div *ngIf="f.amount.errors.required">Amount is required</div>
-                                            </div>
-                                        </div>
-                                      
-                                    </div>
-                                </div>
-                                
-                    
-                            </div>
-                            <!-- /.card-body -->
-
-                            <div class="card-footer float-right">
-                                <button type="button" (click)="onAddExpenses()" class="btn btn-info ">Add Expenses</button>
-                              
-
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <!--/.col (left) -->
-                <!-- right column -->
-
-                <!--/.col (right) -->
-            </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
+    
 
     <!-- /.content  -->
     <section class="content">
@@ -195,11 +110,10 @@
                                                             </i>
                                                             Edit
                                                         </a>
-                                                        <a class="btn btn-danger btn-sm" href="#">
-                                                            <i class="fas fa-trash">
-                                                            </i>
-                                                            Delete
-                                                        </a>
+                                                        <button type="button" class="btn btn-info btn-sm"
+                                                        data-toggle="modal" data-target="#DeleteModal">
+                                                        Delete
+                                                    </button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -255,6 +169,88 @@
     </section>
     <!-- /.card-body -->
 </div>
+
+<!-- Add Modal -->
+
+<div class="modal fade bd-example-modal-lg" id="openexpensesModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Expenses</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addexpensesForm" >
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                        <select formControlName="categorytype" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+                                        <option value="0">--Expenses Type--</option>
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                        <option>option 5</option>
+                                        <!-- <option *ngFor="let summary of summaries" value={{summary}}>
+                                        {{summary}}
+                                    </option> -->
+                                    </select>
+                                        <div *ngIf="submitted && f.categorytype.errors" class="invalid-feedback">
+                                            <div *ngIf="f.categorytype.errors.required">Category Type is required</div>
+                                        </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <textarea class="form-control" rows="3"  formControlName="description"
+                                        placeholder="Enter Description ..."></textarea>
+                                   
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="text"
+                                              placeholder="Date"  formControlName="ondate"
+                                              class="form-control"
+                                              bsDatepicker [ngClass]="{ 'is-invalid': submitted && f.ondate.errors }" />
+                                              <div *ngIf="submitted && f.ondate.errors" class="invalid-feedback">
+                                                  <div *ngIf="f.ondate.errors.required">Date is required</div>
+                                              </div>
+                                      </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <input placeholder="Enter Amount" id="amount"
+                                        formControlName="amount" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+                                    <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                                        <div *ngIf="f.amount.errors.required">Amount is required</div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        
+            
+                    </div>
+                    <!-- /.card-body -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="onAddExpenses()" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- ///////////////////Delete Modal/////////////////// -->
 <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">

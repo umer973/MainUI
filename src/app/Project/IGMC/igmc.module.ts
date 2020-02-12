@@ -10,6 +10,9 @@ import { AddDealerComponent } from '../IGMC/add-dealer/add-dealer.component';
 // import { MatInputModule } from '@angular/material/input';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AddCategoryComponent,
@@ -25,7 +28,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot()
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),// ToastrModule added
+    BsDatepickerModule.forRoot(),
+    
     
   ]
 })

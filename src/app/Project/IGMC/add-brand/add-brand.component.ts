@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader.service';
 import { AddBrandService } from './add-brand.service';
 import { DialogService } from 'src/app/dialog/dialog.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-brand',
@@ -17,9 +18,10 @@ export class AddBrandComponent implements OnInit {
   resultData = []
   search:number=5;
   searchArray=[];
+
   buttonMode="Save";
 
-  constructor(private router: Router, private formBuilder: FormBuilder,
+  constructor(private router: Router, private formBuilder: FormBuilder,private toastr: ToastrService,
     private service: AddBrandService, private loaderservice: LoaderService, private dialog: DialogService) { }
 
   ngOnInit() {
@@ -49,7 +51,7 @@ export class AddBrandComponent implements OnInit {
         }
 
       }, err => {
-
+        this.toastr.error('Internal Server Error', 'Major Error'),
         alert('An error occurred')
       }
 
@@ -78,7 +80,9 @@ export class AddBrandComponent implements OnInit {
 
         if (result.StatusCode == 200) {
           if (result.Result != null) {
-            alert('Data Saved')
+            this.toastr.success('Data Saved', 'Toastr fun!');
+            alert("Data Saved")
+            setTimeout(() => this.toastr.success('Data Saved'))
             this.getAllBrands();
 
           }
@@ -89,6 +93,9 @@ export class AddBrandComponent implements OnInit {
         }
         else {
           alert("Internal Server Error")
+          this.toastr.error('Internal Server Error', 'Major Error', {
+            timeOut: 3000
+          });
           this.loaderservice.hide();
         }
       }, err => {
@@ -99,6 +106,17 @@ export class AddBrandComponent implements OnInit {
     }
     else {
       this.submitted = true;
+    }
+  }
+    keyupFunction(event)
+  {
+   
+    if(event.target.value != '')
+    { 
+      this.searchArray = [] = this.createbrandarray.filter(x=>x.brandname.toLowerCase().includes(event.target.value ))
+    }
+    else{
+      this.searchArray = []  = this.createbrandarray;
     }
   }
 

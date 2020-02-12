@@ -23,7 +23,9 @@ export class ModuleService {
         "ModuleId": 2, "ModuleName": "ProductDetails", "path": "",
         "Pages": [
           { "path": "manageproduct", "PageName": "Manage Product" },
-          { "path": "expiredproducts", "PageName": "Expired Products" }
+          { "path": "expiredproducts", "PageName": "Expired Products" },
+           { "path": "moredetails", "PageName": "More Details" },
+           { "path": "allproductdetails", "PageName": "All Details" }
         ]
       },
       {
@@ -41,7 +43,13 @@ export class ModuleService {
         ]
       },
 
-      { "ModuleId": 5, "ModuleName": "Reports", "path": "" },
+      { 
+        "ModuleId": 5, "ModuleName": "Sales/Reports", "path": "" ,
+        "Pages": [
+          { "path": "addbill", "PageName": "Add Bill" },
+        ] 
+      },
+      
       { "ModuleId": 6, "ModuleName": "User Account", "path": "" },
     ]
    

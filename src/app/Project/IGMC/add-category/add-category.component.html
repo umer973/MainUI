@@ -9,77 +9,17 @@
         </div> -->
         </div><!-- /.container-fluid -->
     </section>
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row ">
-                <!-- left column -->
-                <div class="col-md-12">
-                    <!-- general form elements -->
-                    <div class="card card-info">
-                        <div class="card-header">
-                            <h3 class="card-title">Add Category</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form [formGroup]="addcategoryForm" >
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <input placeholder="Enter CategoryName" id="categoryname"
-                                                formControlName="categoryname" class="form-control"
-                                                [ngClass]="{ 'is-invalid': submitted && f.categoryname.errors }" />
-                                            <div *ngIf="submitted && f.categoryname.errors" class="invalid-feedback">
-                                                <div *ngIf="f.categoryname.errors.required">Category Name is required
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="chooseimage">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose Image
-                                                    </label>
-                                                </div>
-                                                <!-- <div class="input-group-append">
-                                                <span class="input-group-text" id="">Upload</span>
-                                            </div> -->
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <textarea class="form-control" rows="3"
-                                                placeholder="Enter Description ..."></textarea>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <!-- /.card-body -->
-
-                            <div class="card-footer float-right">
-                                <button type="button" (click)="onCategorySave()" class="btn btn-info">Save</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <!--/.col (left) -->
-                <!-- right column -->
-
-                <!--/.col (right) -->
-            </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
+    <div class="row ">
+        <div class="col-md-3 adddesign">
+            <button type="button" class="btn btn-info btn-sm "
+            data-toggle="modal" data-target="#opencategoryModal">
+            Add Category
+        </button>
+        </div>
+       
+        </div>
+    
     <!-- /.content  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
     <section class="content">
         <div class="container-fluid">
@@ -220,4 +160,71 @@
         </div>
     </section>
     <!-- /.card-body -->
+</div>
+
+<!-- Add Modal -->
+<div class="modal fade bd-example-modal-lg" id="opencategoryModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Brand</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               <!-- form start -->
+               <form [formGroup]="addcategoryForm" >
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input placeholder="Enter CategoryName" id="categoryname"
+                                    formControlName="categoryname" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.categoryname.errors }" />
+                                <div *ngIf="submitted && f.categoryname.errors" class="invalid-feedback">
+                                    <div *ngIf="f.categoryname.errors.required">Category Name is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="chooseimage">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose Image
+                                        </label>
+                                    </div>
+                                    <!-- <div class="input-group-append">
+                                    <span class="input-group-text" id="">Upload</span>
+                                </div> -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <textarea class="form-control" rows="3"
+                                    placeholder="Enter Description ..."></textarea>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /.card-body -->
+
+    
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="onCategorySave()" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
 </div>

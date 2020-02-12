@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +15,8 @@ import { ManageproductComponent } from './Project/ProductDetails/manageproduct/m
 import { MoredetailsComponent } from './Project/ProductDetails/moredetails/moredetails.component';
 import { ExpiredProductsComponent } from './Project/ProductDetails/expired-products/expired-products.component';
 import { AddExpenseTypeComponent } from './Project/OfficeExpenses/add-expense-type/add-expense-type.component';
+import { AllproductdetailsComponent } from './Project/ProductDetails/allproductdetails/allproductdetails.component';
+import { AddBillComponent } from './Project/SalesPayment/add-bill/add-bill.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -36,6 +37,8 @@ const routes: Routes = [
       { path: 'moredetails', component: MoredetailsComponent },
       { path: 'expiredproducts', component: ExpiredProductsComponent },
       { path: 'addexpenses', component: AddExpenseTypeComponent },
+      { path: 'allproductdetails', component: AllproductdetailsComponent },
+      { path: 'addbill', component: AddBillComponent },
     ]
   },
   {
@@ -48,6 +51,7 @@ const routes: Routes = [
   },
 ];
 @NgModule({
+  // declarations: [MoredetailsComponent],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

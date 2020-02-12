@@ -11,11 +11,16 @@ import { ReturnItemsComponent } from './return-items/return-items.component';
   declarations: [
     AddBillComponent,
     SalesReportComponent,
-    ReturnItemsComponent
+    ReturnItemsComponent,
+    
   ],
   imports: [
     CommonModule,
-    SalesPaymentRoutingModule
+    SalesPaymentRoutingModule,
+  
+    
+   
+
   ]
 })
 export class SalesPaymentModule { }

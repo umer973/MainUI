@@ -9,6 +9,7 @@ import { ManageproductComponent } from './manageproduct/manageproduct.component'
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MoredetailsComponent } from './moredetails/moredetails.component';
+import { AllproductdetailsComponent } from './allproductdetails/allproductdetails.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MoredetailsComponent } from './moredetails/moredetails.component';
     ReturnExpiredComponent,
     ProductReportsComponent,
     ManageproductComponent,
-    MoredetailsComponent
+    MoredetailsComponent,
+    AllproductdetailsComponent
     
   ],
   imports: [

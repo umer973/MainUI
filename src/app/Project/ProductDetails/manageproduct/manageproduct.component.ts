@@ -11,7 +11,7 @@ export class ManageproductComponent implements OnInit {
   manageproductForm: FormGroup;
   submitted = false;
 
-  constructor(private router:Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.manageproductForm = this.formBuilder.group({
@@ -33,5 +33,16 @@ export class ManageproductComponent implements OnInit {
       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.manageproductForm.value))
     }
   }
+  viewmoredetails(){
+    debugger
+    alert('Single Product Details')
+   
+     this.router.navigate(['/moredetails'])
+}
 
+allproductdetails(){
+  debugger
+  alert('All Products Here')
+   this.router.navigate(['/allproductdetails'])
+}
 }

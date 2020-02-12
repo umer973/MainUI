@@ -19,15 +19,18 @@
                     <div class="card-body">
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="dataTables_length" id="example1_length"><label>Show <select
+                                <div class="col-sm-12 col-md-1">
+                                   Entries
+                                </div>
+                                <div class="col-sm-12 col-md-2 pl0">
+                                    <div class="dataTables_length" id="example1_length"><select
                                                 name="example1_length" aria-controls="example1"
                                                 class="custom-select custom-select-sm form-control form-control-sm">
                                                 <option value="10">10</option>
                                                 <option value="25">25</option>
                                                 <option value="50">50</option>
                                                 <option value="100">100</option>
-                                            </select> entries</label></div>
+                                            </select> </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="card-tools">
@@ -40,6 +43,7 @@
                                           </div>
                                         </div>
                                       </div></div>
+                                      <div class="col-md-3"></div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
@@ -48,9 +52,13 @@
                                         <thead>
                                             <tr role="row">
                                                 <th class="sorting_desc" tabindex="0" aria-controls="example1"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Rendering engine: activate to sort column ascending"
+                                                aria-sort="descending" style="width: 203.4px;">Product Name</th>
+                                                <th class="sorting_desc" tabindex="0" aria-controls="example1"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Rendering engine: activate to sort column ascending"
-                                                    aria-sort="descending" style="width: 203.4px;">Hsn Name</th>
+                                                    aria-sort="descending" style="width: 203.4px;">Hsn No</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Browser: activate to sort column ascending"
@@ -61,6 +69,11 @@
                                                     aria-label="Browser: activate to sort column ascending"
                                                     style="width: 262.6px;">
                                                     selling Price</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example1"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Browser: activate to sort column ascending"
+                                                    style="width: 262.6px;">
+                                                   Buying Date</th>
                                                     <th class="sorting" tabindex="0" aria-controls="example1"
                                                     rowspan="1" colspan="1"
                                                     aria-label="Browser: activate to sort column ascending"
@@ -79,19 +92,26 @@
                                                 <td class="sorting_1">Webkit</td>
                                                 <td>Safari 1.2</td>
                                                 <td>OSX.3</td>
+                                                <td>OSX.3</td>
+                                                <td>OSX.3</td>
                                                 <td>Safari 1.2</td>
                                                
                                                 <td class="project-actions text-right">
-                                                    <a class="btn btn-primary btn-sm" href="#">
-                                                        <i class="fas fa-folder">
-                                                        </i>
-                                                        Return Expired
-                                                    </a>
-                                                    <a class="btn btn-danger btn-sm" href="#">
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                        Delete
-                                                    </a>
+                                                    <button type="button" class="btn btn-info btn-sm"
+                                                    data-toggle="modal" data-target="#openexpiredModal">
+                                                    <i class="fas fa-folder">
+                                                    </i>
+                                                    Return Expired
+                                                </button>
+                                                    <button type="button" class="btn btn-danger btn-sm" 
+                                                    data-toggle="modal" data-target="#deleteModal">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </button>
+
+                                                   
+
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -145,4 +165,110 @@
         </div>
     </div>
 </section>
+</div>
+
+
+<!-- Add Modal -->
+
+<div class="modal fade bd-example-modal-lg" id="openexpiredModal" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Return</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="retuenExpiredForm">
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                   
+                                    <label class="form-check-label" for="exampleCheck2">Auto Complete Here</label>
+                                      <input placeholder="Enter Title" id="title" autocomplete="off" formControlName="title"
+                                          class="form-control"
+                                          [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+                                      <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                          <div *ngIf="f.title.errors.required">Title is required</div>
+                                      </div>
+                                  </div>
+                                <div class="col-md-6">
+                                    <label class="form-check-label" for="exampleCheck2">Pieces</label>
+                                    <input type="number" placeholder="Enter Pieces" id="pieces" formControlName="pieces"
+                                        class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.pieces.errors }" />
+                                    <div *ngIf="submitted && f.pieces.errors" class="invalid-feedback">
+                                        <div *ngIf="f.pieces.errors.required">Pieces is required</div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                     
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-check-label" for="exampleCheck2">Expiry Date</label>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Automatic Expiry Date" formControlName="expirydate"
+                                            class="form-control" bsDatepicker
+                                            [ngClass]="{ 'is-invalid': submitted && f.expirydate.errors }" />
+                                        <div *ngIf="submitted && f.expirydate.errors" class="invalid-feedback">
+                                            <div *ngIf="f.expirydate.errors.required">Expiry Date is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-check-label" for="exampleCheck2">Return Date</label>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Return Date" formControlName="returndate"
+                                            class="form-control" bsDatepicker
+                                            [ngClass]="{ 'is-invalid': submitted && f.returndate.errors }" />
+                                        <div *ngIf="submitted && f.returndate.errors" class="invalid-feedback">
+                                            <div *ngIf="f.returndate.errors.required">Return Date is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+
+<!-- Modal HTML -->
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete these records? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
 </div>
