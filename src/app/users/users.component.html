@@ -1,0 +1,142 @@
+<div class="col-12" id="contents" style="height: 92vh;">
+    <div class="row">
+
+        <div class="offset-1 col-10" style="margin-top: 2%;">
+            <div class="col-12">
+                <h4 class="card-title mb-0">
+                    Active Users
+                </h4>
+                <br>
+                <div class="row">
+                    <div class="col-lg-3" style="cursor: pointer" onclick="viewUser('5f8a948f3d0d0000ac005405')">
+                        <div class="brand-card">
+
+                            <br>
+                            <!-- <i class="icon-people font-5xl icons"></i> -->
+                            <div>
+                                <div
+                                    style="background: #f1f1f1;height: 100px;width: 100px;border-radius: 50px;background-image: url(https://www.bytepaper.com/Cloud/assets/Profile/defaultnew.png);background-size: cover;cursor: pointer;background-position: center;">
+                                </div>
+                            </div>
+
+                            <div class="brand-card-body">
+                                <div>
+                                    <div class="text-value" style="font-size: 14px">Abid</div>
+                                    <div class="text-muted">Login : 17-10-2020<br></div>
+                                </div>
+                            </div>
+                            <div class="card-header bg-success">View Details</div>
+
+                        </div>
+                    </div>
+
+                    <div id="adduser" class="col-lg-3" style="cursor: pointer" >
+                        <div class="brand-card">
+
+                            <br>
+                            <img height="100px" style="border-radius: 50px" title=""
+                                src="https://www.bytepaper.com/Cloud/assets/Profile/plus.png">
+
+                            <div class="brand-card-body">
+                                <div>
+                                    <div class="text-value">2 left</div>
+                                    <div class="text-muted small">You can add 2 more users<br></div>
+                                </div>
+                            </div>
+                            <div class="card-header"(click)="addNewUser()">Add more users</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+       <script type="text/javascript">
+
+            function applyPlan(val) {
+                if (val == "Monthly") {
+                    document.getElementById('Price').value = "250";
+                    document.getElementById('Total').value = document.getElementById('Price').value * document.getElementById('Number').value;
+                }
+                else {
+                    if ("591561922" == "535580444" || "591561922" == "984097290") {
+                        document.getElementById('Price').value = "1000";
+                        document.getElementById('Total').value = document.getElementById('Price').value * document.getElementById('Number').value;
+                    }
+                    else if ("591561922" == "997830200") {
+                        document.getElementById('Price').value = "1500";
+                        document.getElementById('Total').value = document.getElementById('Price').value * document.getElementById('Number').value;
+                    }
+                    else {
+                        document.getElementById('Price').value = "2500";
+                        document.getElementById('Total').value = document.getElementById('Price').value * document.getElementById('Number').value;
+                    }
+
+                }
+            }
+
+
+            function addnew() {
+                document.getElementById("form").reset();
+                $('#addnew').modal('show');
+                document.getElementById("modal-title").innerHTML = "Add new user";
+            }
+
+            function buynew() {
+                $('#buynew').modal('show');
+            }
+
+            function calcprice() {
+                document.getElementById('Total').value = document.getElementById('Number').value * document.getElementById('Price').value;
+            }
+
+            function viewUser(id) {
+                window.location = "?Users&UserDetail&" + id + "&" + "01-10-2020" + "&" + "31-10-2020" + "&" + "2020-10-17";
+            }
+
+            function reqBuy() {
+                window.location = "https://www.bytepaper.com/Cloud/Apps/Instamojo/buyUsers.php?Amount=" + document.getElementById('Total').value + "&Company=" + "DelhiVery&Mobile=" + "7889315238&Email=" + "abidkhanday92@gmail.com&Plan=" + document.getElementById('userPlan').value + "&LicenseNumber=" + "591561922";
+            }
+
+            $(document).ready(function () {
+                $('#form').on('submit', function (e) {
+                    document.getElementById('buttonSave').innerHTML = "Please wait adding User....";
+                    document.getElementById('buttonSave').disabled = true;
+                    e.preventDefault();
+                    var post_data = $('#form').serialize();
+                    $.ajax({
+                        url: 'https://www.bytepaper.com/Cloud/Functions/CRUD.php',
+                        type: "POST",
+                        data: post_data,
+                        success: function (data) {
+                            if (data == "Existing User") {
+                                swal({ text: "User with this email id already exists !", timer: 2000 });
+                                window.location = window.location.href;
+                            }
+                            else {
+                                swal({ text: "User added successfully !", timer: 100 });
+                                $('#addnew').modal('hide');
+                                window.location = window.location.href;
+                            }
+                        },
+                        error: function (jXHR, textStatus, errorThrown) {
+                            swal(errorThrown);
+                        }
+                    });
+                });
+            });
+
+        </script>
+    </div>
+</div>
+
+<audio id="myAudio">
+    <source src="https://www.bytepaper.com/Cloud/assets/notification.ogg" type="audio/ogg">
+    <source src="https://www.bytepaper.com/Cloud/assets/notification.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+<link rel="stylesheet" type="text/css" href="https://www.bytepaper.com/Cloud/assets/js/toastify.css?17.1">
+<script type="text/javascript" src="https://www.bytepaper.com/Cloud/assets/js/toastify.js"></script>

@@ -17,6 +17,7 @@ import { ExpiredProductsComponent } from './Project/ProductDetails/expired-produ
 import { AddExpenseTypeComponent } from './Project/OfficeExpenses/add-expense-type/add-expense-type.component';
 import { AllproductdetailsComponent } from './Project/ProductDetails/allproductdetails/allproductdetails.component';
 import { AddBillComponent } from './Project/SalesPayment/add-bill/add-bill.component';
+import { UsersComponent } from './users/users.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -26,9 +27,10 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'users', component: UsersComponent },
       { path: 'addproduct', component: AddProductComponent },
       { path: 'addbrand', component: AddBrandComponent },
-      { path: 'addcategory', component: AddCategoryComponent },
+      { path: 'addUser', component: AddCategoryComponent },
       { path: 'adddealer', component: AddDealerComponent },
       { path: 'addhsn', component: AddHSNComponent },
       { path: 'createaccount', component: CreateAccountComponent },

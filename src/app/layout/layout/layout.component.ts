@@ -11,7 +11,7 @@ import { LoaderService } from 'src/app/loader.service';
 export class LayoutComponent implements OnInit {
 
   loggedUser:any;
-  constructor(private route:ActivatedRoute,private loaderservice:LoaderService) {
+  constructor(private route:ActivatedRoute,private loaderservice:LoaderService,private router:Router) {
     
   }
 
@@ -22,6 +22,9 @@ export class LayoutComponent implements OnInit {
     this.loggedUser=this.route.snapshot.queryParamMap.get('user');
     console.log(this.loggedUser,"user");
   }
-
+  navigate()
+  {
+    this.router.navigate(['layout/users']);
+  }
  
 }

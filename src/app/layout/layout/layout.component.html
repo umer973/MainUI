@@ -1,25 +1,327 @@
-<div class="wrapper">
-  <!-- Navbar -->
-  <app-header></app-header>
-  <!-- /.navbar -->
-  <!-- Main Sidebar Container -->
-  <!-- <app-loader></app-loader> -->
-  <app-sidebar [loggedUser]="loggedUser"></app-sidebar>
-  <!--/ Main Sidebar Container -->
-  <!-- Content Wrapper. Contains page content -->
+<body id="mainAppBody" style="overflow: hidden;"
+  class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show brand-minimized pace-done">
+  <div class="pace  pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99"
+      style="transform: translate3d(100%, 0px, 0px);">
+      <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+  </div>
 
- 
-  <router-outlet>
-    
-  </router-outlet>
-  <!-- /.content-wrapper -->
-  <!-- Fotter -->
-  <app-footer></app-footer>
-  <!-- End Fotter -->
-  <!-- Control Sidebar -->
-  <!-- <aside class="control-sidebar control-sidebar-dark">-->
-  <!-- Control sidebar content goes here -->
-  <!-- </aside> -->
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+  <header class="app-header navbar">
+    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <span style="font-weight: bold">
+      <a href="/Cloud/Apps/"
+        style="text-decoration: none;color: black;font-family: Changa;font-size: 20px;">Bytepaper </a>
+    </span>
+
+
+    <ul class="nav navbar-nav ml-auto" role="tablist">
+      <li class="nav-item d-md-down-none">
+        <a style="cursor: pointer;" class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+          aria-expanded="false">
+          &nbsp;&nbsp;<span style="color: blue">Need help?</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </a>
+        <div class="dropdown-menu dropdown-menu-right"><a style="cursor: pointer;" class="nav-link"
+            data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          </a><a class="dropdown-item" href="#">
+            <div class="message">
+              <div>
+                <small class="text-muted float-right mt-1">Account manager</small>
+                <br><br>
+              </div>
+              <div class=" font-weight-bold">
+                For a dedicated account manager you need a paid account.
+                <br>
+                To subscribe Bytepaper, click on link below.
+                <br><br>
+                <span style="color: blue;cursor: pointer;" onclick="subs()">Subscribe Now</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </li>
+      <li class="nav-item">
+        <a style="cursor: pointer;" class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="icon-layers text-dark"></i>&nbsp;&nbsp;My Applications&nbsp;&nbsp;
+        </a>
+        <div class="dropdown-menu dropdown-menu-right"><a style="cursor: pointer;" class="nav-link"
+            data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          </a><a class="dropdown-item" href="/Cloud/Apps/?Users&amp;Users">
+            <i class="icon-layers text-dark"></i> Users </a>
+
+        </div>
+
+      </li>
+
+      <li class="nav-item dropdown d-md-down-none">
+        <a style="cursor: pointer;" onclick="asideToggle()" class="nav-link navbar-toggler aside-menu-toggler"
+          data-toggle="aside-menu-lg-show" role="button" aria-haspopup="true" aria-expanded="false">
+           <i class="fa fa-bell-o font-md"></i>&nbsp;&nbsp;&nbsp;
+          <span class="badge badge-pill badge-danger" id="badgeRem" style="font-size: 10px">0</span>
+        </a>
+      </li>
+       
+
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <div style="float: left;padding-top: 10px" class="d-md-down-none">
+            Abid </div>
+          <div class="img-avatar"
+            style="background: #f1f1f1;height: 40px;width: 40px;border-radius: 20px;background-image: url(https://www.bytepaper.com/Cloud/assets/Profile/defaultnew.png);background-size: cover;cursor: pointer;background-position: center;float: right;">
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="../logout.php">
+            <i class="fa fa-lock"></i> Logout</a>
+        </div>
+      </li>
+    </ul>
+    <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <button class="navbar-toggler aside-menu-toggler d-lg-none d-md-down-none" type="button"
+      data-toggle="aside-menu-show">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </header>
+
+
+  <script type="text/javascript">
+    function subs() {
+      // window.open("https://imjo.in/dhxRB7","_blank");
+
+      var plan = 'Yearly';
+      var amount = '7000';
+
+      window.location = "https://www.bytepaper.com/Cloud/Apps/Instamojo/SubscribeApp.php?Amount=" + amount + "&Company=" + "DelhiVery&Mobile=" + "7889315238&Email=" + "abidkhanday92@gmail.com&Purpose=Sales&Plan=" + plan;
+    }
+  </script>
+
+  <script type="text/javascript">
+
+    function playsound() {
+      var x = document.getElementById("myAudio");
+
+      var playPromise = x.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+
+        })
+          .catch(error => {
+
+          });
+      }
+    }
+
+    $(document).ready(function () {
+      notifytoast();
+    });
+
+    function notifytoast(type) {
+    }
+
+  </script>
+  <div class="app-body">
+    <div class="sidebar">
+      <nav class="sidebar-nav ps">
+        <ul class="nav">
+          <li class="nav-item open">
+            <a class="nav-link active" href="">
+              My Applications
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" (click)="navigate()">
+              <i class="nav-icon icon-layers"></i> Users
+
+            </a>
+          </li>
+          <!-- <li class="nav-item"> -->
+          <!-- <a class="nav-link" style="cursor: pointer;" onclick="openApp('Orders')"> -->
+          <!-- <i class="nav-icon icon-layers"></i> Orders -->
+          <!-- </a> -->
+          <!-- </li>          -->
+
+          <script type="text/javascript">
+            if ("" == "Yes") {
+              document.getElementById('moreApp').style.display = "";
+            }
+          </script>
+
+          <br>
+          <!-- <li class="nav-title">Insights</li>                     -->
+          <li class="nav-item px-3 d-compact-none d-minimized-none">
+            <div class="text-uppercase mb-1">
+              <br>
+              <small>
+                <b>Login this month</b>
+              </small>
+            </div>
+            <div class="progress progress-xs">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 3%" aria-valuenow="3"
+                aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <small class="text-muted">1 days</small>
+          </li>
+          <br>
+
+        </ul>
+        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+          <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+        </div>
+        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+          <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+        </div>
+      </nav>
+    </div>
+    <main class="main">
+      <div class="col-12">
+        <div class="row" id="mainContentHolder">
+          <style type="text/css">
+            .scroll-box {
+              overflow-y: auto;
+            }
+
+            .scroll-box::-webkit-scrollbar {
+              width: .0em;
+            }
+          </style>
+         
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+    <aside class="aside-menu">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active show" data-toggle="tab" href="#timeline" role="tab" aria-selected="true">
+            <i class="fa fa-bell"></i>
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-selected="false">
+        <i class="icon-speech"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-selected="false">
+      <i class="icon-settings"></i>
+      </a>
+    </li> -->
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active show" id="timeline" role="tabpanel">
+
+        </div>
+        <!-- <div class="tab-pane p-3" id="messages" role="tabpanel">       
+    </div>  
+    <div class="tab-pane p-3" id="settings" role="tabpanel">
+    </div> -->
+      </div>
+    </aside>
+
+    <script type="text/javascript">
+      function openDeatail(id, table, type, tktid) {
+        if (table == "Deal") {
+          window.location = "?Sales&DealDetail&" + id + "&&" + type;
+        }
+        else if (table == "Prospect") {
+          window.location = "?Sales&ProspectDetail&" + id + "&" + type + "&" + 20;
+        }
+        else if (table == "Tickets") {
+          window.location = "?Support&TicketDetail&" + tktid + "&" + type + "&" + 20;
+        }
+        else {
+          window.location = "?Sales&Tasks&";
+        }
+      }
+    </script>
+  </div>
+
+  <script type="text/javascript">
+    function validateSession() {
+      var AppURL = "https://www.bytepaper.com/Cloud/";
+      var jsonData = httpGet(AppURL + "Functions/caller.php?validateSession&-&Ztl2J+hu6i8SqQVMwWr5YSSud26m4QAfqmDCRGTSx3RbXJkamS+5JmOypQBV1ic+OP+ocTpssEApcaq+3ZGGWA==");
+
+
+
+      if (jsonData == "Dead") {
+        swal({ title: "Session Expired", text: " Please login again to continue", animation: "slide-from-bottom", timer: 2000, showConfirmButton: false });
+        setTimeout(function () { window.location = "http://www.bytepaper.com/Cloud" }, 2000);
+      }
+
+    }          
+  </script>
+
+  <script type="text/javascript">
+    validateSession();
+  // setInterval(function()
+  // {            
+  //   validateSession();       
+  // }, 60000);
+  </script>
+
+  <script type="text/javascript">
+      // if(localStorage.asideToggle=="Open")
+      // {        
+        // document.getElementById('mainAppBody').className+=" aside-menu-lg-show";               
+      // }
+
+  </script>
+
+  <script src="../assets/vendors/jquery/js/jquery.min.js?1.5"></script>
+  <script src="../assets/vendors/popper.js/js/popper.min.js?1.5"></script>
+  <script src="../assets/vendors/bootstrap4/js/bootstrap.min.js?1.5"></script>
+  <script src="../assets/vendors/pace-progress/js/pace.min.js?1.5"></script>
+  <script src="../assets/vendors/perfect-scrollbar/js/perfect-scrollbar.min.js?1.5"></script>
+  <script src="../assets/vendors/@coreui/coreui/js/coreui.min.js?1.5"></script>
+  <script type="text/javascript" src="../assets/js/toastify.js"></script>
+  <script src="../assets/js/tooltips.js"></script>
+
+
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+      $('#formUpdate').on('submit', function (e) {
+        e.preventDefault();
+        var post_data = $('#formUpdate').serialize();
+        $.ajax({
+          url: 'https://www.bytepaper.com/Cloud/Functions/CRUD.php',
+          type: "POST",
+          data: post_data,
+          success: function (data) {
+            swal({ text: "Company details updated successfully !", timer: 1000 });
+            if ("Sales CRM" == "Sales CRM") {
+              httpGet("https://www.bytepaper.com/Cloud/Functions/caller.php?freeSubscription&-&Sales CRM");
+              swal({ title: "Trial version activated", icon: "success" });
+              setTimeout(function () {
+                window.location = "https://www.bytepaper.com/Cloud/Applications/?Sales%20CRM&Dashboard";
+              }, 2000);
+            }
+            else {
+              setTimeout(function () {
+                window.location = window.location.href;
+              }, 2000);
+            }
+          },
+          error: function (jXHR, textStatus, errorThrown) {
+            swal(errorThrown);
+          }
+        });
+      });
+    });
+
+
+
+  </script>
+
+
+
+</body>

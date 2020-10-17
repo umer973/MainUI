@@ -1,137 +1,28 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Demo Theme</title>
+  <head>    
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Icons-->
+    <title>Business Cloud</title>        
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon1.ico">
+    <link href="https://www.bytepaper.com/Cloud/assets/vendors/flag-icon-css/css/flag-icon.min.css?1.8" rel="stylesheet">
+    <link href="https://www.bytepaper.com/Cloud/assets/vendors/flag-icon-css/css/flag-icon.min.css?1.8" rel="stylesheet">
+    <link href="https://www.bytepaper.com/Cloud/assets/vendors/font-awesome/css/font-awesome.min.css?1.8" rel="stylesheet">
+    <link href="https://www.bytepaper.com/Cloud/assets/vendors/simple-line-icons/css/simple-line-icons.css?1.8" rel="stylesheet">
+    <!-- Main styles for this application-->
+    <link href="https://www.bytepaper.com/Cloud/assets/css/style.css?1.8" rel="stylesheet">
+    <link href="https://www.bytepaper.com/Cloud/assets/vendors/@coreui/icons/css/coreui-icons.min.css?1.8" rel="stylesheet">
+    <link href="https://www.bytepaper.com/Cloud/assets/css/custom.css?1.8" rel="stylesheet">    
+  </head>
   <base href="/">
-  <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="assets/plugins/iCheck/flat/blue.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="assets/plugins/morris/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="assets/plugins/datepicker/datepicker3.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker-bs3.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--- index.html -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-</head>
-
 <body>
-
-  <app-root>
-    <style>
-      app-root {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-
-        color: pink;
-        text-transform: uppercase;
-        font-family: -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          Oxygen-Sans,
-          Ubuntu,
-          Cantarell,
-          Helvetica,
-          sans-serif;
-        font-size: 2.5em;
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-      }
-
-      body {
-        background:transparent;
-        margin: 0;
-        padding: 0;
-       
-      }
-
-      @keyframes dots {
-        50% {
-          transform: translateY(-.4rem);
-        }
-
-        100% {
-          transform: translateY(0);
-        }
-      }
-
-      .d {
-        animation: dots 1.5s ease-out infinite;
-      }
-
-      .d-2 {
-        animation-delay: .5s;
-      }
-
-      .d-3 {
-        animation-delay: 1s;
-      }
-    </style>
-
-    Loading<span class="d">.</span><span class="d d-2">.</span><span class="d d-3">.</span>
-  </app-root>
-
-
-  <!-- jQuery -->
-  <script src="assets/plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>
-    $.widget.bridge('uibutton', $.ui.button)
-  </script>
-  <!-- Bootstrap 4 -->
-  <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Morris.js charts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="assets/plugins/morris/morris.min.js"></script>
-  <!-- Sparkline -->
-  <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-  <!-- jvectormap -->
-  <script src="assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-  <script src="assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-  <!-- jQuery Knob Chart -->
-  <script src="assets/plugins/knob/jquery.knob.js"></script>
-  <!-- daterangepicker -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-  <script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- datepicker -->
-  <script src="assets/plugins/datepicker/bootstrap-datepicker.js"></script>
-  <!-- Bootstrap WYSIHTML5 -->
-  <script src="assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-  <!-- Slimscroll -->
-  <script src="assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-  <!-- FastClick -->
-  <script src="assets/plugins/fastclick/fastclick.js"></script>
-  <!-- AdminLTE App -->
-  <script src="assets/dist/js/adminlte.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="assets/dist/js/pages/dashboard.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="assets/dist/js/demo.js"></script>
+  <app-root></app-root>
 </body>
-
 </html>

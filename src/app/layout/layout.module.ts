@@ -8,6 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
  import { CategoryComponent } from '../Masters/category/category.component';
  import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LoaderComponent } from '../loader/loader.component';
+import { UsersComponent } from '../users/users.component';
 // import { ErrorComponent } from '../error/error.component';
 // import { AddProductComponent } from '../Project/IGMC/add-product/add-product.component';
 // import { AddBrandComponent } from '../Project/IGMC/add-brand/add-brand.component';
@@ -16,7 +17,11 @@ import { LoaderComponent } from '../loader/loader.component';
 // import { AddDealerComponent } from '../Project/IGMC/add-dealer/add-dealer.component';
 
 @NgModule({
-  declarations: [LayoutComponent,HeaderComponent,FooterComponent,SidebarComponent,DashboardComponent,CategoryComponent],
+  declarations: [LayoutComponent,HeaderComponent,
+    FooterComponent,SidebarComponent,DashboardComponent
+    ,CategoryComponent
+    ,UsersComponent
+  ],
   imports: [
     CommonModule,
     LayoutRoutingModule

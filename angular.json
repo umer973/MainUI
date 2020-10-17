@@ -98,7 +98,6 @@
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
-             
             ],
             "scripts": []
           }
@@ -131,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "MainUI"
+  "defaultProject": "MainUI",
+  "cli": {
+    "analytics": "9aad6595-d46f-483d-bb35-3c81dfdf85e5"
+  }
 }

@@ -19,11 +19,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from './loader/loader.component';
 import { OfficeExpensesModule } from './Project/OfficeExpenses/office-expenses.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LoaderComponent,
+   
 
 
   ],

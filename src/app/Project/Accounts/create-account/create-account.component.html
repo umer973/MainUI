@@ -1,88 +1,266 @@
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <!-- <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Project Add</h1>
-          </div>
-        </div> -->
-        </div><!-- /.container-fluid -->
-    </section>
-<div class="card card-info">
-    <div class="card-header">
-      <h3 class="card-title">Create Account</h3>
-    </div>
-    <!-- /.card-header -->
-    <!-- form start -->
-<form [formGroup]="createaccountForm" class="form-horizontal"> 
-    <div class="card-body">
-        <div class="form-group row">
-            <div class="col-sm-6">
-            <input placeholder="Enter Name" id="name" formControlName="name" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                <div *ngIf="f.name.errors.required">Name is required</div>
-            </div></div>
-        
-       
-            <div class="col-sm-6">
-            <input placeholder="Enter UserName" id="username" formControlName="username" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                <div *ngIf="f.username.errors.required">User Name is required</div>
-            </div></div>
-        </div>
-        <div class="form-group row">
-            <!-- <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label> -->
-            <div class="col-md-6">
-                <input placeholder="Enter Email" id="email" formControlName="email"
-                    class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Email is required</div>
-                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                    </div>
-            </div>
-        
-            <div class="col-sm-6">
-                        <select formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
-                        <option value="0">--Select Role--</option>
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
-                        <!-- <option *ngFor="let summary of summaries" value={{summary}}>
-                        {{summary}}
-                    </option> -->
-                    </select>
-                        <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
-                            <div *ngIf="f.role.errors.required">Role is required</div>
-                        </div>
-            </div>
-        </div>
-    
-      
 
-        <div class="form-group row">
-            <!-- <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label> -->
-            <div class="col-sm-6">
-              <input type="password" placeholder="Password" class="form-control" id="password" formControlName="password"
-              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                  <div *ngIf="f.password.errors.required">Password is required</div>
-              </div>
-            </div>
-          </div>
-    </div>
-    <!-- /.card-body -->
-    <div class="card-footer float-right">
-        <button type="button"  (click)="onCreateAccount()" class="btn btn-info">CreateAccount</button>
+      <div class="col-12" id="contents" style="height: 92vh;">
+        <div class="row">
         
-    </div>
-   
-    <!-- /.card-footer -->
-</form>
-</div>
-</div>
+        <div class="offset-1 col-10" style="margin-top: 2%;">  
+        <div class="col-12">    
+          <h4 class="card-title mb-0">
+              Active Users
+          </h4> 
+          <br>
+          <div class="row">                            
+                                  <div class="col-lg-3" style="cursor: pointer" onclick="viewUser('5f8a948f3d0d0000ac005405')">
+                          <div class="brand-card">                                                    
+                           
+                              <br>
+                              <!-- <i class="icon-people font-5xl icons"></i> -->
+                              <div>                  
+                              <div style="background: #f1f1f1;height: 100px;width: 100px;border-radius: 50px;background-image: url(https://www.bytepaper.com/Cloud/assets/Profile/defaultnew.png);background-size: cover;cursor: pointer;background-position: center;"></div>     
+                              </div>
+                           
+                            <div class="brand-card-body">
+                              <div>                              
+                                  <div class="text-value" style="font-size: 14px">Abid</div>
+                                  <div class="text-muted">Login : 17-10-2020<br></div>
+                              </div>                                                         
+                            </div>
+                                                            <div class="card-header bg-success">View Details</div>
+                                                          
+                          </div>
+                      </div>
+                      
+                                  <div id="adduser" class="col-lg-3" style="cursor: pointer" onclick="addnew()">
+                          <div class="brand-card">                                                    
+                          
+                              <br>
+                              <img height="100px" style="border-radius: 50px" title="" src="https://www.bytepaper.com/Cloud/assets/Profile/plus.png">
+                          
+                            <div class="brand-card-body">
+                              <div>                              
+                                  <div class="text-value">2 left</div>
+                                  <div class="text-muted small">You can add 2 more users<br></div>
+                              </div>                                                         
+                            </div>
+                            <div class="card-header">+ Add more users</div>
+                          </div>
+                      </div>
+                       
+          </div>
+        </div>
+        </div>
+        
+        
+        <!-- /.modal add new lead-->
+        <div class="modal fade" id="addnew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+          <div class="col-sm-10">
+            <h4 class="modal-title" id="modal-title">Add new user</h4>
+          </div>      
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>      
+        </div>
+        <!-- modal body starts -->
+        <form id="form" method="POST">                     
+            <div class="modal-body">            
+              <div class="col-lg-12">
+                <div class="row"> 
+                  <div class="col-12">                                                
+                    <input class="form-control" id="FormInfo" name="FormInfo" type="text" value="OcGNa40t89TfgzVo5ibZUgRAlogF0cecWjRGI85OVHYo6q/cycxD267v6wCAThkoiW7C6M/K42MgVYRjxO3qRw==&amp;&amp;Kxz2UMG+FBfk/iANt9PHKhCPCX5LMYT9TbLhvwwjMT+tSXtFcmtQqOwbZ8xV7tSUT1FTXmIm6N1oB2FUYGttTVfHhRxCRWqmzYpaLInxWN4=&amp;&amp;Users&amp;&amp;New" style="display: none;">
+                    <input class="form-control" id="ProfilePic" name="ProfilePic" type="text" value="defaultnew.png" style="display: none;">
+                    <div class="row">
+                      <div class="form-group col-sm-12">
+                          <label>Name*</label>
+                          <input class="form-control" id="Name" name="Name" type="text" required="">
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Mobile no.*</label>
+                          <input class="form-control" id="ContactNumber" name="ContactNumber" type="text" required="">
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label>Email ID*</label>
+                          <input class="form-control" id="EmailID" name="EmailID" type="email" required="">
+                        </div>
+                      </div>                                                       
+                    </div>                                                                                        
+                  </div>                
+                </div>
+              </div>                                                                     
+            </div>
+            <div class="modal-footer">            
+              <button class="btn btn-dark" id="buttonSave" type="submit">Save</button>            
+            </div>
+        </form>      
+        </div>
+        </div>
+        </div>
+        
+        
+        <div class="modal fade" id="buynew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+          <div class="col-sm-10">
+            <h4 class="modal-title" id="modal-title">Buy more users</h4>
+          </div>      
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>      
+        </div>
+        <!-- modal body starts -->                      
+        <div class="modal-body">            
+          <div class="col-lg-12">
+            <div class="row"> 
+              <div class="col-12">                                                              
+                <div class="row">                
+                  <div class="col-sm-12">
+                    <div class="form-group">                              
+                      <label for="name">Select Plan</label>                                    
+                      <select class="form-control" id="userPlan" name="userPlan" onchange="applyPlan(this.value)">
+                          <!-- <option value="Monthly">Monthly</option> -->
+                          <option value="Yearly">Yearly</option>                            
+                      </select>                                                      
+                    </div>
+                  </div>
+                  <div class="form-group col-sm-12">
+                      <label>Price</label>
+                      <input class="form-control" id="Price" name="Price" type="text" value="2500" required="" readonly="">
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Number of users you want to buy</label>
+                      <input class="form-control" id="Number" name="Number" type="number" min="1" max="100" value="1" required="" onkeyup="calcprice()" onchange="calcprice()">
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Total Amount</label>
+                      <input class="form-control" id="Total" name="Total" type="number" value="2500" required="" readonly="">
+                    </div>
+                  </div>                                                       
+                </div>                                                                                        
+              </div>                
+            </div>
+          </div>                                                                     
+        </div>
+        <div class="modal-footer">            
+          <button class="btn btn-success" id="buttonSave" type="button" onclick="reqBuy()">Buy</button>            
+        </div>        
+        </div>
+        </div>
+        </div>
+        
+        
+        
+        <script type="text/javascript">
+        
+        function applyPlan(val)
+        {
+        if(val=="Monthly")
+        {
+        document.getElementById('Price').value = "250";
+        document.getElementById('Total').value = document.getElementById('Price').value*document.getElementById('Number').value;
+        }
+        else
+        {
+        if("591561922"=="535580444" || "591561922"=="984097290")    
+        {
+        document.getElementById('Price').value = "1000";
+        document.getElementById('Total').value = document.getElementById('Price').value*document.getElementById('Number').value;
+        }
+        else if("591561922"=="997830200")
+        {
+        document.getElementById('Price').value = "1500";
+        document.getElementById('Total').value = document.getElementById('Price').value*document.getElementById('Number').value;
+        }
+        else
+        {
+        document.getElementById('Price').value = "2500";
+        document.getElementById('Total').value = document.getElementById('Price').value*document.getElementById('Number').value;
+        }
+        
+        }
+        }
+        
+        
+        function addnew()
+        {
+        document.getElementById("form").reset();    
+        $('#addnew').modal('show');
+        document.getElementById("modal-title").innerHTML="Add new user";          
+        }
+        
+        function buynew()
+        {      
+        $('#buynew').modal('show');            
+        }
+        
+        function calcprice()
+        {
+        document.getElementById('Total').value = document.getElementById('Number').value*document.getElementById('Price').value;
+        }
+        
+        function viewUser(id)
+        {
+        window.location="?Users&UserDetail&"+id+"&"+"01-10-2020"+"&"+"31-10-2020"+"&"+"2020-10-17";
+        }
+        
+        function reqBuy()
+        {
+        window.location="https://www.bytepaper.com/Cloud/Apps/Instamojo/buyUsers.php?Amount="+document.getElementById('Total').value+"&Company="+"DelhiVery&Mobile="+"7889315238&Email="+"abidkhanday92@gmail.com&Plan="+document.getElementById('userPlan').value+"&LicenseNumber="+"591561922";
+        }
+        
+        $(document).ready(function () 
+        {
+        $('#form').on('submit', function(e) 
+        {        
+        document.getElementById('buttonSave').innerHTML="Please wait adding User....";
+        document.getElementById('buttonSave').disabled = true;
+        e.preventDefault();
+        var post_data = $('#form').serialize();        
+        $.ajax({
+            url : 'https://www.bytepaper.com/Cloud/Functions/CRUD.php',
+            type: "POST",
+            data: post_data,
+            success: function (data) 
+            {                                                
+                if(data=="Existing User")
+                {
+                  swal({text: "User with this email id already exists !",timer: 2000}); 
+                  window.location=window.location.href;
+                }
+                else
+                {
+                  swal({text: "User added successfully !",timer: 100}); 
+                  $('#addnew').modal('hide');
+                  window.location=window.location.href;                            
+                }               
+            },
+            error: function (jXHR, textStatus, errorThrown) 
+            {
+                swal(errorThrown);
+            }
+        });
+        });
+        }); 
+        
+        </script>  </div>
+        </div>
+        
+        <audio id="myAudio">
+        <source src="https://www.bytepaper.com/Cloud/assets/notification.ogg" type="audio/ogg">
+        <source src="https://www.bytepaper.com/Cloud/assets/notification.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+        
+        
+        <link rel="stylesheet" type="text/css" href="https://www.bytepaper.com/Cloud/assets/js/toastify.css?17.1">   
+        <script type="text/javascript" src="https://www.bytepaper.com/Cloud/assets/js/toastify.js"></script>  
+        
+        
+            
