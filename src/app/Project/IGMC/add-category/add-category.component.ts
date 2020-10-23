@@ -30,7 +30,10 @@ export class AddCategoryComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
-      contactNo: ['', Validators.required]
+      contactNo: ['', Validators.required],
+      isActive:[],
+      isAdmin:[],
+      dataVisibility:[]
     });
 
   }
@@ -39,12 +42,12 @@ export class AddCategoryComponent implements OnInit {
   submit(event) {
 
     console.log(this.userFormGroup);
-
+    this.submitted = true;
     if (this.userFormGroup.valid) {
-      this.submitted = true;
+      
       this.addcreatoryarray = JSON.parse(JSON.stringify(this.userFormGroup.getRawValue()))
 
-      document.getElementById('buttonSave').innerHTML = "Please wait saving user....";
+      //document.getElementById('buttonSave').innerHTML = "Please wait saving user....";
       //document.getElementById('buttonSave'). = true;
 
 

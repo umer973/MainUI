@@ -22,8 +22,9 @@ body {
   background-image: none !important;
 } */
 /* You can add global styles to this file, and also import other style files */
-@charset "UTF-8";
 
+@charset "UTF-8";
+@import "~bootstrap/dist/css/bootstrap.css";
  */
 :root {
   --blue: #20a8d8;
