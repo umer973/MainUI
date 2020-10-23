@@ -18,6 +18,7 @@ import { MaterialModule } from './Project/material.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from './loader/loader.component';
 import { OfficeExpensesModule } from './Project/OfficeExpenses/office-expenses.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { OfficeExpensesModule } from './Project/OfficeExpenses/office-expenses.m
     OfficeExpensesModule,
     //MatInputModule,
     //MaterialModule,
+    ToastrModule.forRoot(),
     NgbModule,
     
     

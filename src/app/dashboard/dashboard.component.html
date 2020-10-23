@@ -1,226 +1,74 @@
-<div class="col-md-10 col-12" style="height: calc(100vh - 46px);padding: 2% 5% 0% 2%">  
-  <div class="col-12 text-left" style="color: black;height: 13vh;">
-    <h3 class="display-10">DelhiVery</h3>
-    <p class="lead">591561922</p>      
-  </div>  
-  <div id="applist" class="row">  
-      <div class="col-12">
-              
-                        <div>
-                              
-          <div style="padding: 1%">
-    <div class="card-group mb-4">
-                            <div class="card">
-                        <div class="card-body">         
-                            <div class="text-value" id="Followup">0</div>
-                            <small class="text-muted text-uppercase font-weight-bold">Followup</small>
-                        </div>
-                    </div>
-                                    <div class="card">
-                        <div class="card-body">         
-                            <div class="text-value" id="Creation">0</div>
-                            <small class="text-muted text-uppercase font-weight-bold">Creation</small>
-                        </div>
-                    </div>
-                                    <div class="card">
-                        <div class="card-body">         
-                            <div class="text-value" id="Updation">0</div>
-                            <small class="text-muted text-uppercase font-weight-bold">Updation</small>
-                        </div>
-                    </div>
-                                    <div class="card">
-                        <div class="card-body">         
-                            <div class="text-value" id="Deletion">0</div>
-                            <small class="text-muted text-uppercase font-weight-bold">Deletion</small>
-                        </div>
-                    </div>
-                                    <div class="card">
-                        <div class="card-body">         
-                            <div class="text-value" id="Deal Win">0</div>
-                            <small class="text-muted text-uppercase font-weight-bold">Deal Win</small>
-                        </div>
-                    </div>
-                                    <div class="card">
-                        <div class="card-body">         
-                            <div class="text-value" id="Deal Lose">0</div>
-                            <small class="text-muted text-uppercase font-weight-bold">Deal Lose</small>
-                        </div>
-                    </div>
-                                    <div class="card">
-                        <div class="card-body">         
-                            <div class="text-value" id="Lead Drop">0</div>
-                            <small class="text-muted text-uppercase font-weight-bold">Lead Drop</small>
-                        </div>
-                    </div>
-                  
+<div class="col-md-10 col-12" style="height: calc(100vh - 46px);padding: 2% 5% 0% 2%">
+    <div class="col-12 text-left" style="color: black;height: 13vh;">
+        <h3 class="display-10">Leads</h3>
+        <p class="lead">0</p>
     </div>
-</div>
-<div class="timeline" id="timeline" style="margin-left: -47%;padding: 1%"><div class="container right" style="width: 100%"><div class="content"><div style="width: 100%;">No activities found</div></div></div></div>
+    <div id="applist" class="row">
+        <div class="col-12">
 
-<script type="text/javascript">
-    if(screen.width<500)
-    {
-        document.getElementById('timeline').style.marginLeft =  "0%";
-    }  
-    function actDetail(det)
-    {
-        window.location = "?Insights&"+det;
-    }
+            <div>
 
-    if(document.getElementById(""))
-    {
-        document.getElementById("").className = "card bg-light";   
-    }
-</script>
+                <div style="padding: 1%">
+                    <div class="card-group mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-value" id="Followup">0</div>
+                                <small class="text-muted text-uppercase font-weight-bold">Followup</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-value" id="Creation">0</div>
+                                <small class="text-muted text-uppercase font-weight-bold">Creation</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-value" id="Updation">0</div>
+                                <small class="text-muted text-uppercase font-weight-bold">Updation</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-value" id="Deletion">0</div>
+                                <small class="text-muted text-uppercase font-weight-bold">Deletion</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-value" id="Deal Win">0</div>
+                                <small class="text-muted text-uppercase font-weight-bold">Deal Win</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-value" id="Deal Lose">0</div>
+                                <small class="text-muted text-uppercase font-weight-bold">Deal Lose</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-value" id="Lead Drop">0</div>
+                                <small class="text-muted text-uppercase font-weight-bold">Lead Drop</small>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <br>
+                            <button class="btn btn-success px-4" (click)="toaster()">Log In</button>
+                        </div>
 
+                    </div>
+                </div>
+                <div class="timeline" id="timeline" style="margin-left: -47%;padding: 1%">
+                    <div class="container right" style="width: 100%">
+                        <div class="content">
+                            <div style="width: 100%;">No activities found</div>
+                        </div>
+                    </div>
+                </div>
 
-<script type="text/javascript">
-    setTimeout( function() 
-    {         
-        getProspectActivity();
-    }, 1000); 
-
-     
-    function getProspectActivity()
-    {
-         
-        if("Yes"=="No")
-        {
-            url = "https://www.bytepaper.com/Cloud/Functions/caller.php?listActivity&-&591561922&-&"+"17-10-2020"+"&-&"+"abidkhanday92@gmail.com";
-        }
-        else
-        {
-            url = "https://www.bytepaper.com/Cloud/Functions/caller.php?listActivity&-&591561922&-&"+"17-10-2020";
-        }
-
-        var req = new XMLHttpRequest();
-        req.open('GET', url);
-
-        req.onload = function () 
-        {
-            if (req.status == 200) 
-            {                
-                psum = req.response;
-                
-                parsedJSON = JSON.parse(psum);
-
-                var timelineContent = "";
-
-                var actionArray = [];
-
-                actionArray["Created"] = 0
-                actionArray["Updated"] = 0
-                actionArray["Deleted"] = 0
-                actionArray["Followup"] = 0
-                actionArray["Deal Won"] = 0
-                actionArray["Deal Lost"] = 0
-                actionArray["Prospect Dropped"] = 0
-
-                if(parsedJSON.length==0)
-                {
-                    timelineContent='<div class="container right" style="width: 100%">'+
-                                        '<div class="content">'+
-                                            '<div style="width: 100%;">No activities found</div>'+
-                                        '</div>'+                                                
-                                    '</div>';
-                }
-
-                for(var i=0;i<parsedJSON.length;i++)
-                {                    
-                    var text = decodeURIComponent(parsedJSON[i].Text);
-
-                    text = text.replace(/\+/g," ");
-
-                    actionArray[parsedJSON[i].Action]++;
-
-                    if(text.includes("mp3"))
-                    {
-                        text='<audio onclick="event.stopPropagation();" controls><source src="'+text+'"></audio>';
-                    }
-                    else if(text.includes("wav"))
-                    {
-                        text='<audio onclick="event.stopPropagation();" controls><source src="'+text+'"></audio>';
-                    }
-                    else if(text.includes("servetel"))
-                    {
-                        text='<audio controls><source src="'+text+'" type=\'audio/mpeg\'></audio>';
-                    }
-                    else if(text.includes("myoperator"))
-                    {
-                        text='<audio onclick="event.stopPropagation();" controls><source src="'+text+'"></audio>';
-                    }
-
-                    if(text.includes("Reminder Created") || text.includes("Task Created"))
-                    {
-                        text="<a style='text-decoration:none' href='?Sales&Tasks&"+""+"'>"+text+"</a>";
-                    }
-
-                    var maincont = '';
-
-                    if(parsedJSON[i].ProsName)
-                    {
-                        if(parsedJSON[i].Table=="Deal")
-                        {
-                            maincont='<div style="width: 100%;" class="small text-muted pull-left"><b><a href="?Sales&DealDetail&'+parsedJSON[i].actID+'">'+parsedJSON[i].ProsName+'</a></b></div>';
-                        }
-                        else if(parsedJSON[i].Table=="Ticket")
-                        {
-                            maincont='<div style="width: 100%;" class="small text-muted pull-left"><b><a href="?Support&TicketDetail&'+parsedJSON[i].actID+'">Ticket No : '+parsedJSON[i].TicketNo+" | "+parsedJSON[i].ProsName+'</a></b></div>';
-                        }
-                        else
-                        {
-                            maincont='<div style="width: 100%;" class="small text-muted pull-left"><b><a href="?Sales&ProspectDetail&'+parsedJSON[i].actID+'">'+parsedJSON[i].ProsName+'</a></b></div>';
-                        }
-                    }
-
-                    var upic="";
-                    if(parsedJSON[i].UserPic)
-                    {
-                        upic = '<div class="col-md-2 col-12">'+
-                                        '<div class="avatar float-right">'+
-                                        '<img class="img-avatar" style="height:40px;width:80px" title="'+parsedJSON[i].UsName+'" src="'+parsedJSON[i].UserPic+'" alt=""/>'+
-                                        '</div>'+
-                                    '</div>';
-                    }
-
-                    timelineContent+=
-                        '<div class="container right" style="width: 100%">'+
-                            '<div class="content" style="min-height: 5vh">'+
-                                '<div class="row">'+
-                                    '<div class="col-md-10 col-12">'+
-                                        '<div style="width: 100%;">'+text+'</div>'+
-                                        '<div style="width: 100%;" class="small text-muted pull-left">'+parsedJSON[i].DateTime+'</div>'+
-                                        maincont+
-                                    '</div>'+
-                                    upic+
-                                '</div>'+
-                            '</div>'+
-                        '</div>';
-                    
-                }
-
-                document.getElementById('timeline').innerHTML = timelineContent;  
-                 
-                document.getElementById('Creation').innerHTML = actionArray["Created"];           
-                document.getElementById('Updation').innerHTML = actionArray["Updated"];           
-                document.getElementById('Deletion').innerHTML = actionArray["Deleted"];           
-                document.getElementById('Followup').innerHTML = actionArray["Followup"];           
-                document.getElementById('Deal Win').innerHTML = actionArray["Deal Won"];           
-                document.getElementById('Deal Lose').innerHTML = actionArray["Deal Lost"];           
-                document.getElementById('Lead Drop').innerHTML = actionArray["Prospect Dropped"];           
-            } 
-        };
-
-        req.onerror = function () 
-        {
-            console.log('Network Error');
-        };
-
-        req.send();       
-    }
-</script>   
-        </div>  
-        <br>   
-      </div>                               
+            </div>
+            <br>
+        </div>
     </div>
 </div>

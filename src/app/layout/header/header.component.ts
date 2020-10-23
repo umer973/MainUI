@@ -12,4 +12,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggleAside() {
+  
+    document.getElementById("mainAppBody").className+="aside-menu-lg-show sidebar-show";
+  }
+
 }

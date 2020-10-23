@@ -1,101 +1,82 @@
-<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-    </ul>
-  
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
+<header class="app-header navbar">
+  <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+    <span class="navbar-toggler-icon" (onclick)="toggleAside()"></span>
+  </button>
+
+  <span style="font-weight: bold">
+    <a href="#"
+      style="text-decoration: none;color: black;font-family: Changa;font-size: 20px;">Radix</a>
+  </span>
+
+
+  <ul class="nav navbar-nav ml-auto" role="tablist">
+    <li class="nav-item d-md-down-none">
+      <a style="cursor: pointer;" class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+        aria-expanded="false">
+        &nbsp;&nbsp;<span style="color: blue">Need help?</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </a>
+      <div class="dropdown-menu dropdown-menu-right"><a style="cursor: pointer;" class="nav-link"
+          data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        </a><a class="dropdown-item" href="#">
+          <div class="message">
+            <div>
+              <small class="text-muted float-right mt-1">Account manager</small>
+              <br><br>
+            </div>
+            <div class=" font-weight-bold">
+              For a dedicated account manager you need a paid account.
+              <br>
+              To subscribe Bytepaper, click on link below.
+              <br><br>
+              <span style="color: blue;cursor: pointer;" onclick="subs()">Subscribe Now</span>
+            </div>
+          </div>
+        </a>
       </div>
-    </form>
-  
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- <button type="button"  class="btn btn-info ">Logout</button> -->
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <!-- <i class="fa fa-comments-o"></i> -->
-          <span class="badge badge-danger navbar-badge">IGMC</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                 LogOut
-                </h3>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                   Change Password
-                  </h3>
-                </div>
-             
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <div class="dropdown-divider"></div>
-          <!-- <a href="#" class="dropdown-item dropdown-footer">See All Messages</a> -->
+
+    </li>
+    <li class="nav-item">
+      <a style="cursor: pointer;" class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
+        aria-expanded="false">
+        <i class="icon-layers text-dark"></i>&nbsp;&nbsp;My Applications&nbsp;&nbsp;
+      </a>
+      <div class="dropdown-menu dropdown-menu-right"><a style="cursor: pointer;" class="nav-link"
+          data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        </a><a class="dropdown-item" href="/Cloud/Apps/?Users&amp;Users">
+          <i class="icon-layers text-dark"></i> Users </a>
+
+      </div>
+
+    </li>
+
+    <li class="nav-item dropdown d-md-down-none">
+      <a style="cursor: pointer;" onclick="asideToggle()" class="nav-link navbar-toggler aside-menu-toggler"
+        data-toggle="aside-menu-lg-show" role="button" aria-haspopup="true" aria-expanded="false">
+         <i class="fa fa-bell-o font-md"></i>&nbsp;&nbsp;&nbsp;
+        <span class="badge badge-pill badge-danger" id="badgeRem" style="font-size: 10px">0</span>
+      </a>
+    </li>
+     
+
+    <li class="nav-item dropdown">
+      <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <div style="float: left;padding-top: 10px" class="d-md-down-none">
+          Abid </div>
+        <div class="img-avatar"
+          style="background: #f1f1f1;height: 40px;width: 40px;border-radius: 20px;background-image: url(https://www.bytepaper.com/Cloud/assets/Profile/defaultnew.png);background-size: cover;cursor: pointer;background-position: center;float: right;">
         </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-bell-o"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fa fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-          <i class="fa fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="../logout.php">
+          <i class="fa fa-lock"></i> Logout</a>
+      </div>
+    </li>
+  </ul>
+  <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+    <span class="navbar-toggler-icon" (click)="toggleAside()" ></span>
+  </button>
+  <button class="navbar-toggler aside-menu-toggler d-lg-none d-md-down-none" type="button"
+    data-toggle="aside-menu-show">
+    <span class="navbar-toggler-icon" (click)="toggleAside()"></span>
+  </button>
+</header>

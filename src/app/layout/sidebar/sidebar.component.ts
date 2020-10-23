@@ -36,5 +36,10 @@ export class SidebarComponent implements OnInit {
     this.router.navigate([this.routeUrl])
   }
 
+  navigate()
+  {
+    this.router.navigate(['layout/users']);
+  }
+
 
 }
