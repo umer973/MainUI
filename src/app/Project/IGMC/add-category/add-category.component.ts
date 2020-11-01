@@ -6,6 +6,7 @@ import { DialogService } from 'src/app/dialog/dialog.service';
 import { AddCategoryService } from './add-category.service';
 import { NotificationServiceService } from 'src/app/notification-service.service';
 import { ThirdPartyDraggable } from '@fullcalendar/interaction';
+import { Users } from 'src/app/Models/users.model';
 
 @Component({
   selector: 'app-add-category',
@@ -16,6 +17,7 @@ export class AddCategoryComponent implements OnInit {
   userFormGroup: FormGroup;
   submitted = false;
   addcreatoryarray = [];
+  user: Users;
   constructor(private router: Router, private formBuilder: FormBuilder,
     private service: AddCategoryService, private loaderservice: LoaderService,
     private dialog: DialogService, private notifyService: NotificationServiceService) { }
@@ -31,63 +33,50 @@ export class AddCategoryComponent implements OnInit {
       password: ['', Validators.required],
       email: ['', Validators.required],
       contactNo: ['', Validators.required],
-      isActive:[],
-      isAdmin:[],
-      dataVisibility:[]
+      isActive: [],
+      isAdmin: [],
+      dataVisibility: []
     });
 
   }
   get f() { return this.userFormGroup.controls; }
 
   submit(event) {
-
-    console.log(this.userFormGroup);
+    this.userFormGroup.reset;
     this.submitted = true;
     if (this.userFormGroup.valid) {
-      
-      this.addcreatoryarray = JSON.parse(JSON.stringify(this.userFormGroup.getRawValue()))
 
-      //document.getElementById('buttonSave').innerHTML = "Please wait saving user....";
-      //document.getElementById('buttonSave'). = true;
-
-
-
-
-      console.log(this.addcreatoryarray, "User")
-      let postDataArray: any = {
-        "Mode": 0,
-        "dsdata": {
-          "Category": [this.addcreatoryarray]
-        }
-      }
-
-      console.log(postDataArray);
+      this.user = this.userFormGroup.getRawValue();
+      console.log(this.user);
       this.loaderservice.show();
-      this.service.postcategory(postDataArray).subscribe(response => {
+      this.service.postcategory(this.user).subscribe(response => {
         let result: any = response;
-        alert("Data saved in an Array")
+
         if (result.StatusCode == 200) {
           if (result.Result != null) {
-            alert('Sucess')
+            this.notifyService.showSuccess("Data Saved", "Radix");
+            // this.userFormGroup.reset();
             // localStorage.setItem('isLoggedin', 'true');
-            this.router.navigate(['/AddCategory'])
+            //this.router.navigate(['/AddCategory'])
+            this.clear();
+            this.submitted = false;
 
 
-            // this.clear();
           }
           else {
-            alert('Login failed')
+            this.notifyService.showError("Internal server error !!", "Radix");
             localStorage.setItem('isLoggedin', 'true');
           }
-          this.loaderservice.hide();
+
 
 
         }
         else {
-          alert("Internal Server Error")
-          this.loaderservice.hide();
+          this.notifyService.showError("Internal server error !!", "Radix");
+
 
         }
+        this.loaderservice.hide();
 
       }, err => {
         this.notifyService.showError("Internal server error !!", "Radix");
@@ -100,4 +89,12 @@ export class AddCategoryComponent implements OnInit {
       this.submitted = false;
     }
   }
+
+  clear() {
+    this.userFormGroup.controls.userName.setValue('');
+    this.userFormGroup.controls.reset;
+
+  }
+
+
 }

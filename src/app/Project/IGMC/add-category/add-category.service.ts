@@ -9,7 +9,7 @@ export class AddCategoryService {
   constructor(private http: HttpClient, private url: ApiService) {
   }
   postcategory(data: any) {
-    return this.http.post(this.url.BaseUrl + "Category", data);
+    return this.http.post(this.url.BaseUrl + "CreateUser", data);
   }
 
   getCategory() {
