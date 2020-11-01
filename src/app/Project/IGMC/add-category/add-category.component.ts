@@ -14,35 +14,31 @@ import { Users } from 'src/app/Models/users.model';
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent implements OnInit {
+
   userFormGroup: FormGroup;
   submitted = false;
-  addcreatoryarray = [];
   user: Users;
-  constructor(private router: Router, private formBuilder: FormBuilder,
-    private service: AddCategoryService, private loaderservice: LoaderService,
-    private dialog: DialogService, private notifyService: NotificationServiceService) { }
+
+  constructor(
+    private router: Router
+    , private formBuilder: FormBuilder
+    , private service: AddCategoryService
+    , private loaderservice: LoaderService
+    , private dialog: DialogService
+    , private notifyService: NotificationServiceService
+  ) { }
 
   ngOnInit() {
-    this.service.getCategory().subscribe(
-      res => {
-        console.log(res);
-      }
-    )
-    this.userFormGroup = this.formBuilder.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
-      email: ['', Validators.required],
-      contactNo: ['', Validators.required],
-      isActive: [],
-      isAdmin: [],
-      dataVisibility: []
-    });
 
+    this.CreateFormControls();
   }
-  get f() { return this.userFormGroup.controls; }
+
+  get f() {
+    return this.userFormGroup.controls;
+  }
 
   submit(event) {
-    this.userFormGroup.reset;
+
     this.submitted = true;
     if (this.userFormGroup.valid) {
 
@@ -55,26 +51,19 @@ export class AddCategoryComponent implements OnInit {
         if (result.StatusCode == 200) {
           if (result.Result != null) {
             this.notifyService.showSuccess("Data Saved", "Radix");
-            // this.userFormGroup.reset();
             // localStorage.setItem('isLoggedin', 'true');
             //this.router.navigate(['/AddCategory'])
             this.clear();
-            this.submitted = false;
-
-
+            this.submitted = true;
           }
           else {
             this.notifyService.showError("Internal server error !!", "Radix");
             localStorage.setItem('isLoggedin', 'true');
           }
 
-
-
         }
         else {
           this.notifyService.showError("Internal server error !!", "Radix");
-
-
         }
         this.loaderservice.hide();
 
@@ -92,9 +81,18 @@ export class AddCategoryComponent implements OnInit {
 
   clear() {
     this.userFormGroup.controls.userName.setValue('');
-    this.userFormGroup.controls.reset;
-
   }
 
+  CreateFormControls() {
+    this.userFormGroup = this.formBuilder.group({
+      userName: ['', Validators.required],
+      password: ['', Validators.required],
+      email: ['', Validators.required],
+      contactNo: ['', Validators.required],
+      isActive: [],
+      isAdmin: [],
+      dataVisibility: []
+    });
 
+  }
 }
