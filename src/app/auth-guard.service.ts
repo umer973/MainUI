@@ -22,8 +22,8 @@ export class AuthGuardService {
     
 
     else {
-    // this.router.navigate['/']
-    return true;
+     this.router.navigate['/login']
+    
     }
   }
 }

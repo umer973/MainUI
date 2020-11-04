@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { LoaderService } from '../loader.service';
+import { NotificationServiceService } from '../notification-service.service';
+import { Users } from '../Models/users.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,20 +14,21 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   loading: boolean = false;
-  userDataArray = [];
+  user: Users;
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private service: LoginService,
-    private loaderservice: LoaderService
+    private loaderservice: LoaderService,
+    private notificationService:NotificationServiceService
   ) { }
 
   ngOnInit() {
 
     this.clear();
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
+      userName: ['', [Validators.required]],
       password: ['', [Validators.required,]]
     });
 
@@ -34,60 +37,59 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   login() {
-    this.router.navigate(['/layout'], { queryParams: { 'user': "Admin" } });
+    debugger;
 
-    // if (this.loginForm.valid) {
-    //   this.submitted = true;
-    //   this.userDataArray = JSON.parse(JSON.stringify(this.loginForm.getRawValue()))
-    //   let postDataArray: any = {
-    //     "Mode": 0,
-    //     "dsdata": {
-    //       "User": [this.userDataArray]
-    //     }
-    //   }
-    //   console.log(postDataArray)
-    //   // Calling API
-    //   this.loaderservice.show();
-    //   this.service.postLogin(postDataArray).subscribe(response => {
-    //     let result: any = response;
-    //     console.log(result);
-    //     if (result.StatusCode == 200) {
-
-    //       if (result.Result != null) {
-    //        // alert('Sucess')
-    //         localStorage.setItem('isLoggedin', 'true');
-    //         this.router.navigate(['/layout'], { queryParams: { 'user': result.Result.userName } });
-    //         this.clear();
-    //       }
-    //       else {
-    //         alert('Login failed')
-    //         localStorage.setItem('isLoggedin', 'true');
-    //       }
-    //       this.loaderservice.hide();
+    if (this.loginForm.valid) {
+      this.submitted = true;
+      this.user = this.loginForm.getRawValue();
+      this.user.email="";
+      this.user.contactNo="";
+      
 
 
-    //     }
-    //     else {
-    //       alert("Internal Server Error")
-    //       this.loaderservice.hide();
+      // Calling API
+      this.loaderservice.show();
+      this.service.postLogin(this.user).subscribe(response => {
+        let result: any = response;
+        console.log(result);
+        if (result.StatusCode == 200) {
 
-    //     }
+          if (result.Result.length>0) {
+            // alert('Sucess')
+            localStorage.setItem('isLoggedin', 'true');
+            this.router.navigate(['/layout'], { queryParams: { 'user': result.Result.userName } });
+            this.clear();
+          }
+          else {
+            this.notificationService.showInfo("Invalid login ", "Radix")
+            localStorage.setItem('isLoggedin', 'true');
+          }
+         
 
-    //   }, err => {
-    //     alert('An error occured please try again');
-    //     this.loaderservice.hide();
 
-    //   });
+        }
+        else {
+          this.notificationService.showError("Internal server error", "Radix")
+          
+          
 
-    // }
-    // else {
-    //   this.submitted = true;
-    // }
+        }
+
+      }, err => {
+        this.notificationService.showError("Internal server error", "Radix");
+        this.loaderservice.hide();
+
+      },);
+      
+
+    }
+    else {
+      this.submitted = true;
+    }
 
   }
-  clear()
-  {
-   
+  clear() {
+
   }
 
 

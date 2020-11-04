@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
       if (result.StatusCode == 200) {
 
         if (result != null) {
-          this.notifyService.showSuccess(result.Result, 'Radix');
+          this.notifyService.showSuccess("Welcome", 'Radix');
           this.loaderService.hide();
 
         }

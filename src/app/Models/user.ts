@@ -1,8 +1,8 @@
 export class User {
-    userId: number;
-    userName: any;
-    password: any;
-    userType: number;
+   public userId: number;
+   public userName: any;
+   public password: any;
+   public userType: number;
 
 
     public getModal() {

@@ -1,61 +1,69 @@
-<div class="col-md-12" style="padding: 0px;min-height: 100vh">      
+<div class="col-md-12" style="padding: 0px;min-height: 100vh">
   <div class="row">
-    <div class="col-md-8 d-none d-md-block" style="background-image: url(https://www.bytepaper.com/Cloud/assets/login_call.png);background-repeat: no-repeat;background-size: cover;background-position: center; padding: 0px;min-height: 100vh">
+    <div class="col-md-8 d-none d-md-block"
+      style="background-image: url(https://www.bytepaper.com/Cloud/assets/login_call.png);background-repeat: no-repeat;background-size: cover;background-position: center; padding: 0px;min-height: 100vh">
       <!-- <br/><br/><br/>
       <center>
         <h3> Bytepaper</h3>
       </center> -->
     </div>
-    <div class="col-md-4 col-12 justify-content-center" style="padding: 3% 3%;min-height: 100vh;border-left:1px solid #D1D1D2">
-      <div class="card-body">                        
-      
-          <img src="https://www.bytepaper.com/Cloud/assets/webimg/bytepaper.png" style="width: 150px">
-        
+    <div class="col-md-4 col-12 justify-content-center"
+      style="padding: 3% 3%;min-height: 100vh;border-left:1px solid #D1D1D2">
+      <div class="card-body">
+
+        <img src="https://www.bytepaper.com/Cloud/assets/webimg/bytepaper.png" style="width: 150px">
+
         <br><br>
         <h4 id="head">Sign in to your account</h4>
         <br>
         <div id="knownUser" style="display: none;">
           <div class="row justify-content-center">
             <div class="col-12">
-                            
-                <div id="img" style="background: #f1f1f1;height: 100px;width: 100px;border-radius: 50px;background-size:cover;background-position: center;"></div>
-              
+
+              <div id="img"
+                style="background: #f1f1f1;height: 100px;width: 100px;border-radius: 50px;background-size:cover;background-position: center;">
+              </div>
+
             </div>
           </div>
-          <p><b><span id="namee"></span></b></p>          
-        </div>            
+          <p><b><span id="namee"></span></b></p>
+        </div>
         <p class="text-muted"></p>
-                   
-          <div class="input-group mb-3">                 
-            <input class="form-control" type="email" name="emailid" id="emailid" placeholder="Email ID" autofocus="" style="display: block;">
+        <form [formGroup]="loginForm">
+          <div class="input-group mb-3">
+            <input class="form-control" type="email"  autofill="false" formControlName="userName" placeholder="Email ID" autofocus=""
+              style="display: block;">
           </div>
-          <div class="input-group mb-4">                  
-            <input class="form-control" type="password" name="password" placeholder="Password" autofocus="">
+          <div class="input-group mb-4">
+            <input class="form-control" type="password" formControlName="password" placeholder="Password" autofocus="">
           </div>
-          <div class="input-group mb-4" style="display:none">                  
+          <div class="input-group mb-4" style="display:none">
             <input class="form-control" type="text" id="ipadr" name="ipadr" placeholder="" autofocus="">
           </div>
           <div class="row">
-            <div class="col-6">                      
-              <a href="#" onclick="changeUser()"><button class="btn btn-link px-0" type="button">Change user</button></a>
+            <div class="col-6">
+              <a href="#" onclick="changeUser()"><button class="btn btn-link px-0" type="button">Change
+                  user</button></a>
             </div>
             <div class="col-6 text-right">
               <!-- <a href="forgot.php"><button class="btn btn-link px-0" type="button">Forgot password?</button></a> -->
-              <br>                      
-            </div>                    
-            <div class="col-12">                      
+              <br>
+            </div>
+            <div class="col-12">
               <br>
               <button class="btn btn-success px-4" (click)="login()">Log In</button>
             </div>
           </div>
-               
-        <hr>
-        <br>
-        <a href="GetStarted/?Sales CRM"><button class="btn btn-link px-0" type="button">Don't have an account? Sign up</button></a>
-        <br>
-        
-      </div>            
+
+          <hr>
+          <br>
+          <a href="GetStarted/?Sales CRM"><button class="btn btn-link px-0" type="button">Don't have an account? Sign
+              up</button></a>
+          <br>
+        </form>
+
+      </div>
     </div>
-  </div>      
+  </div>
 </div>
 <router-outlet></router-outlet>

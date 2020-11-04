@@ -17,5 +17,6 @@ export class LoaderService {
   }
   hide() {
     this.loaderSubject.next(<LoaderState>{ show: false });
+    
   }
 }
