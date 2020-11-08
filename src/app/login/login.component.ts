@@ -57,7 +57,9 @@ export class LoginComponent implements OnInit {
           if (result.Result.length>0) {
             // alert('Sucess')
             localStorage.setItem('isLoggedin', 'true');
-            this.router.navigate(['/layout'], { queryParams: { 'user': result.Result.userName } });
+            localStorage.setItem('UserId',result.Result[0].UserId);
+            localStorage.setItem('UserName',result.Result[0].UserName);
+            this.router.navigate(['/layout'], { queryParams: { 'user': result.Result[0].userName } });
             this.clear();
           }
           else {

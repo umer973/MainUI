@@ -8,7 +8,7 @@
                 </h4>
                 <br>
                 <div class="row">
-                    <div class="col-lg-3" style="cursor: pointer" onclick="viewUser('5f8a948f3d0d0000ac005405')">
+                    <div class="col-lg-3" *ngFor="let data of users">
                         <div class="brand-card">
 
                             <br>
@@ -21,11 +21,11 @@
 
                             <div class="brand-card-body">
                                 <div>
-                                    <div class="text-value" style="font-size: 14px">Abid</div>
-                                    <div class="text-muted">Login : 17-10-2020<br></div>
+                                    <div class="text-value" style="font-size: 14px">{{data.userName}}</div>
+                                    <!-- <div class="text-muted">Login : 17-10-2020<br></div> -->
                                 </div>
                             </div>
-                            <div class="card-header bg-success">View Details</div>
+                            <div class="card-header bg-success" style="cursor: pointer" (click)="ViewDetails(data)">View Details</div>
 
                         </div>
                     </div>
@@ -39,8 +39,8 @@
 
                             <div class="brand-card-body">
                                 <div>
-                                    <div class="text-value">2 left</div>
-                                    <div class="text-muted small">You can add 2 more users<br></div>
+                                    <div class="text-value"></div>
+                                    <div class="text-muted small">You can add  more users<br></div>
                                 </div>
                             </div>
                             <div class="card-header"(click)="addNewUser()">Add more users</div>

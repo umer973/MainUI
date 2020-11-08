@@ -12,7 +12,7 @@ export class MainService {
 
     }
     GetAllUsers(userId: any) {
-        return this.http.get(this.url.BaseUrl + "User");
+        return this.http.get(this.url.BaseUrl + "GetUsers?userId=" + userId);
     }
 
 }

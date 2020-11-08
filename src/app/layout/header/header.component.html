@@ -1,6 +1,6 @@
 <header class="app-header navbar">
   <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
-    <span class="navbar-toggler-icon" (onclick)="toggleAside()"></span>
+    <span class="navbar-toggler-icon" (click)="toggleAside()"></span>
   </button>
 
   <span style="font-weight: bold">
@@ -58,17 +58,19 @@
     </li>
      
 
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown" id="divMenu">
       <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         <div style="float: left;padding-top: 10px" class="d-md-down-none">
-          Abid </div>
-        <div class="img-avatar"
+          {{UserName}} </div>
+        <div class="img-avatar" (click)="ShowDropDown()"
           style="background: #f1f1f1;height: 40px;width: 40px;border-radius: 20px;background-image: url(https://www.bytepaper.com/Cloud/assets/Profile/defaultnew.png);background-size: cover;cursor: pointer;background-position: center;float: right;">
         </div>
       </a>
-      <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="../logout.php">
-          <i class="fa fa-lock"></i> Logout</a>
+      <div class="dropdown-menu dropdown-menu-right" id="divNav">
+        <a class="dropdown-item" href="?Profile&amp;myProfile&amp;5f8a948f3d0d0000ac005405&amp;01-11-2020&amp;30-11-2020">
+          <i class="fa fa-user"></i> My Profile</a>
+        <a class="dropdown-item" (click)="LogOut()">
+          <i class="fa fa-bell-o"></i> Logout</a>
       </div>
     </li>
   </ul>

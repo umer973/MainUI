@@ -23,21 +23,21 @@ export class DashboardComponent implements OnInit {
       if (result.StatusCode == 200) {
 
         if (result != null) {
-          this.notifyService.showSuccess("Welcome", 'Radix');
+         // this.notifyService.showSuccess("Welcome", 'Radix');
           this.loaderService.hide();
 
         }
         else {
-          this.notifyService.showInfo('No user found', 'Radix');
+          //this.notifyService.showInfo('No user found', 'Radix');
           this.loaderService.hide();
         }
       }
       else {
-        this.notifyService.showWarning(result, 'Radix');
+       // this.notifyService.showWarning(result, 'Radix');
         this.loaderService.hide();
       }
     }, err => {
-      this.notifyService.showError(err, 'Radix');
+      //this.notifyService.showError(err, 'Radix');
       this.loaderService.hide();
 
 

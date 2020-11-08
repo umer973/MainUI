@@ -24,6 +24,7 @@ export class SidebarComponent implements OnInit {
     
     console.log(this.userObject);
     this.modules = this.service.loadModules();
+    
 
   }
 

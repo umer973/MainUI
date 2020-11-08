@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoaderService } from 'src/app/loader.service';
 import { DialogService } from 'src/app/dialog/dialog.service';
 import { AddCategoryService } from './add-category.service';
@@ -17,7 +17,7 @@ export class AddCategoryComponent implements OnInit {
 
   userFormGroup: FormGroup;
   submitted = false;
-  user: Users;
+  user: Users = null;
 
   constructor(
     private router: Router
@@ -26,11 +26,17 @@ export class AddCategoryComponent implements OnInit {
     , private loaderservice: LoaderService
     , private dialog: DialogService
     , private notifyService: NotificationServiceService
+    , private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-
+    //let data=this.route.snapshot.queryParamMap.get('userData');
+    this.user = history.state.data;
+    console.log(this.user, "userdata");
     this.CreateFormControls();
+    if (this.user != undefined)
+      this.userFormGroup.patchValue(this.user)
+
   }
 
   get f() {
@@ -50,20 +56,20 @@ export class AddCategoryComponent implements OnInit {
 
         if (result.StatusCode == 200) {
           if (result.Result != null) {
-            this.notifyService.showSuccess("Data Saved", "Radix");
-            // localStorage.setItem('isLoggedin', 'true');
-            //this.router.navigate(['/AddCategory'])
+            this.notifyService.showSuccess(result.Result, "Radix");
+            localStorage.setItem('isLoggedin', 'true');
+            this.router.navigate(['layout/users']);
             this.clear();
             this.submitted = true;
           }
           else {
-            this.notifyService.showError("Internal server error !!", "Radix");
-            localStorage.setItem('isLoggedin', 'true');
+            this.notifyService.showError(result.Result, "Radix");
+            localStorage.setItem('isLoggedin', 'false');
           }
 
         }
         else {
-          this.notifyService.showError("Internal server error !!", "Radix");
+          this.notifyService.showError(result.Result, "Radix");
         }
         this.loaderservice.hide();
 
@@ -80,8 +86,9 @@ export class AddCategoryComponent implements OnInit {
   }
 
   clear() {
-    this.userFormGroup.controls.userName.setValue('');
+    ///this.userFormGroup.patchValue(this.user);
   }
+
 
   CreateFormControls() {
     this.userFormGroup = this.formBuilder.group({
@@ -91,7 +98,8 @@ export class AddCategoryComponent implements OnInit {
       contactNo: ['', Validators.required],
       isActive: [],
       isAdmin: [],
-      dataVisibility: []
+      dataVisibility: [],
+      userId: []
     });
 
   }
